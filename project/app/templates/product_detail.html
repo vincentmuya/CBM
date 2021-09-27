@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="">
+    <title>CBM</title>
+</head>
+<body>
+<div class="panel panel-default">
+   <div class="panel-heading"><strong>{{product.name}} details</strong></div>
+   <div class="card" style="width: 55rem;">
+   <img class="img-details" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap">
+     <div class="card-body">
+       <h4 class="card-text">Product: <strong>{{product.name}}</strong></h4>
+       <h4 class="card-title">Category: <strong><a href="">{{ product.category }}</a></strong></h4>
+       <h4 class="card-text">Price: <strong>Ksh{{ product.price }}/=</strong></h4>
+       <h4 class="card-text">Description: <strong>{{ product.description }}</strong></h4>
+     </div>
+   </div>
+ </div>
+
+</body>
+</html>
