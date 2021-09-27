@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index, name='index'),
+    url(r'^sale$', views.on_sale, name='on_sale'),
 ]
 
 if settings.DEBUG:

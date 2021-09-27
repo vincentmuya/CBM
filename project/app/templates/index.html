@@ -13,56 +13,11 @@
     {%include 'carousel.html'%}
 <br>
 <h4>On Sale/ New Arrivals</h4>
-    <div class="row" id="row">
+    {%include 'on_sale.html'%}
 
-          <h1 style="color:white;" class="products">{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
-          {%for product in products %}
-          <div class="card" id="block">
-            <a href=""><img class="card-img-top" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap"></a>
-            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text">Ksh {{ product.price }}/=</p>
-            </div>
-          </div>
-
-          {%endfor%}
-        <h5><a href="">View more</a></h5>
-        </div>
 <br>
 </div>
 </body>
 </html>
 
-<style media="screen">
-#row {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  #block {
-    width: 18.9rem;
-    float: left;
-  }
-
-
-  .card {
-    padding: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    margin: 20px;
-
-  }
-
-  .card-img-top {
-    height: 150px;
-    width: 150px;
-  }
-
-  .card-title {
-    /* color: black; */
-  }
-
-  .card:hover {
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
-  }
-</style>
 {%endblock%}
