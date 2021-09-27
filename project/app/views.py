@@ -12,7 +12,7 @@ def index(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
-    return render(request, "index.html", {'category': category,'categories': categories, 'products': products})
+    return render(request, "index.html", {'category': category, 'categories': categories, 'products': products})
 
 
 def product_detail(request, id, slug):
@@ -29,3 +29,15 @@ def on_sale(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
     return render(request, "on_sale.html", {'category': category, 'categories': categories, 'products': products})
+
+
+def search_results(request):
+    categories = Category.objects.all()
+    if 'name' in request. GET and request.GET["name"]:
+        search_term = request.GET.get("name")
+        searched_ref = Product.search_by_name(search_term)
+        message = f"{search_term}"
+        return render(request, "search.html", {"message": message, "name": searched_ref, "categories": categories})
+    else:
+        message = "No match for search"
+        return render(request, 'search.html')

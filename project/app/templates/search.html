@@ -1,0 +1,19 @@
+<div class="col-md-8">
+        {% if name%}
+          <h2 style="text-align:center;" class="name">Found {{ name|length }} of searched term {{message}}</h2>
+        {% else %}
+          <h2 style="text-align:center;" class="name"> Found 0 name for the search term {{message}}</h2>
+        {% endif %}
+
+      {% if name %}
+        {% for result in name%}
+      <div class="card" id="block" style="width: 18rem;">
+        <a href="{{ result.get_absolute_url }}"><img class="card-img-top" src="{{ result.image.url}}" alt="Card image cap"></a>
+        <div class="card-body">
+          <h4 class="card-title">{{result.name}}</h4>
+          <p class="card-text">Ksh {{result.price}}/=</p>
+        </div>
+      </div>
+        {% endfor %}
+      {% endif %}
+</div>
