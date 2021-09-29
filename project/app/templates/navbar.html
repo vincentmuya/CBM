@@ -12,6 +12,7 @@
       {% for c in categories %}
       <li {% if category.slug == c.slug %}class="selected"{% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
       {% endfor %}
+
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -41,3 +42,8 @@
     </form>
   </div>
 </nav>
+<style media="screen">
+li {
+    padding:5px;
+}
+</style>

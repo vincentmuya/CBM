@@ -1,4 +1,4 @@
-{% load static %}
+{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,3 +24,61 @@
 
 </body>
 </html>
+
+<style media="screen">
+.img-details{
+  width: 80%;
+  padding-top: 10px;
+  padding-left: 40px;
+  height: 400px;
+}
+.card-body{
+  align-items: center;
+}
+.panel-default {
+    border-color: #000;
+    width: 67%
+}
+.panel-heading{
+  text-align: center;
+}
+.card-title, .card-text{
+  padding-left: 40px;
+}
+body{
+  margin-top: ;
+  background-color: ;
+}
+label{
+  padding-left: 40px;
+}
+@media screen and (max-width:650px){
+  .img-details{
+    width: 250px;
+    padding-top: 10px;
+    padding-left: 48px;
+    height: 200px;
+  }
+  .card-body{
+    align-items: center;
+  }
+  .panel-default {
+      border-color: #000;
+      width: 95%
+
+  }
+  .panel-heading{
+    text-align: center;
+  }
+  .card-title, .card-text{
+    padding-left: 40px;
+  }
+h4{
+  font-size: 15px;
+}
+label{
+  padding-left: 40px;
+}
+}
+</style>
+{%endblock%}

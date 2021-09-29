@@ -1,4 +1,4 @@
- {% load static %}
+{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,7 +24,7 @@
           </div>
 
           {%endfor%}
-        <h5><a href="{%url 'on_sale'%}">View more</a></h5>
+
         </div>
 
 </body>
@@ -62,3 +62,4 @@
     box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
   }
 </style>
+{%endblock%}
