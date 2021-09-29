@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^sale$', views.on_sale, name='on_sale'),
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.product_detail, name='product_detail'),
     url(r'^search$', views.search_results, name='search_results'),
+    url(r'^(?P<category_slug>[-\w]+)/$', views.index, name='product_list_by_category'),
 ]
 
 if settings.DEBUG:

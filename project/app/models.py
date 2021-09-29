@@ -26,8 +26,26 @@ class Category(models.Model):
         return reverse('product_list_by_category', args=[self.slug])
 
 
+class SubCategory(models.Model):
+    parent_category = models.ForeignKey(Category, related_name='category', null=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, db_index=True, null=True)
+    slug = models.SlugField(max_length=200, db_index=True, unique=True, null=True)
+
+    class Meta:
+        ordering = ('name',)
+        verbose_name = 'subcategory'
+        verbose_name_plural = 'subcategory'
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('product_list_by_subcategory', args=[self.slug])
+
+
 class Product(models.Model):
-    category = models.ForeignKey(Category, related_name='products', null=True, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, related_name='parent', null=True, on_delete=models.CASCADE)
+    sub_category = models.ForeignKey(SubCategory, related_name='child', null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, db_index=True)
     slug = models.SlugField(max_length=200, db_index=True, null=True)
     image = models.ImageField(upload_to="posts/", blank=True, null=True)
