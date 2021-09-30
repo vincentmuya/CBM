@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http  import HttpResponse
 from .models import Product, Category, SubCategory
 from django.http import JsonResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
