@@ -15,7 +15,7 @@
    <img class="img-details" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap">
      <div class="card-body">
        <h4 class="card-text">Product: <strong>{{product.name}}</strong></h4>
-       <h4 class="card-title">Category: <strong><a href="">{{ product.category }}</a></strong></h4>
+       <h4 class="card-title">Category: <strong><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></strong></h4>
        <h4 class="card-text">Price: <strong>Ksh{{ product.price }}/=</strong></h4>
        <h4 class="card-text">Description: <strong>{{ product.description }}</strong></h4>
      </div>
@@ -46,7 +46,7 @@
   padding-left: 40px;
 }
 body{
-  margin-top: ;
+  margin-top:80px ;
   background-color: ;
 }
 label{
