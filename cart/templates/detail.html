@@ -5,7 +5,6 @@
 
 
 {% block content %}
-{%include 'nav.html'%}
     <div class="container">
         <div class="row" style="margin-top: 6%">
         <h2>Your Shopping Cart
@@ -68,15 +67,15 @@
                 </tbody>
             </table>
         <p class="text-right">
-            <a href="{% url "product_list" %}" class="btn btn-default">Continue Shopping</a>
+            <a href="{% url "index" %}" class="btn btn-default">Continue Shopping</a>
             <a href="{% url "cart:check_out" %}" class="btn btn-primary">Checkout</a>
         </p>
         </div>
     </div>
 <style media="screen">
   body{
-    color:white;
-    background-color:black;
+    color:;
+    background-color:;
   }
 .container{
   padding-top:10px;
