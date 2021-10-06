@@ -12,6 +12,8 @@ urlpatterns = [
     url("register", views.register_request, name="register"),
     url("login", views.login_request, name="login"),
     url("logout", views.logout_request, name="logout"),
+    url('access/token', views.getAccessToken, name='get_mpesa_access_token'),
+    url('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
 ]
 
 if settings.DEBUG:
