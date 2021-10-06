@@ -41,7 +41,7 @@
                                     <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
                                 </a>
                             </td>
-                            <td>{{ product.name }}</td>
+                            <td style="color:white;">{{ product.name }}</td>
                             <td>
                                 <form action="{% url "cart:cart_add" product.id %}" method="post">
                                     {% csrf_token %}
@@ -54,8 +54,8 @@
                               <a href="/dialogs/{{product.seller}}"><button type="button" class="btn btn-success" name="button">Order</button></a>
                                 <a href="{% url "cart:cart_remove" product.id %}"><button type="button" class="btn btn-warning" name="button">Remove</button></a>
                             </td>
-                            <td>kshs. {{ item.price }}/=</td>
-                            <td>kshs. {{ item.total_price }}/=</td>
+                            <td style="color:white;">kshs. {{ item.price }}/=</td>
+                            <td style="color:white;">kshs. {{ item.total_price }}/=</td>
                         </tr>
                     {% endwith %}
                 {% endfor %}
@@ -67,15 +67,15 @@
                 </tbody>
             </table>
         <p class="text-right">
-            <a href="{% url "index" %}" class="btn btn-default">Continue Shopping</a>
+            <a style="color:white;" href="{% url "index" %}" class="btn btn-default">Continue Shopping</a>
             <a href="{% url "cart:check_out" %}" class="btn btn-primary">Checkout</a>
         </p>
         </div>
     </div>
 <style media="screen">
   body{
-    color:;
-    background-color:;
+    color:white;
+    background-color:black;
   }
 .container{
   padding-top:10px;

@@ -1,5 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark navbar-fixed-top">
-  <a class="navbar-brand" href="{%url 'index'%}">CBM</a>
+  <a class="navbar-brand" href="{%url 'index'%}">
+    <img class="logo" src="/static/images/cbm.png" alt="">
+  </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,20 +14,6 @@
       <li {% if category.slug == c.slug %}class="selected"{% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
       {% endfor %}
 
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
@@ -51,5 +39,9 @@
 <style media="screen">
 li {
     padding:5px;
+}
+.logo {
+    height: 70px;
+    width: 100px;
 }
 </style>

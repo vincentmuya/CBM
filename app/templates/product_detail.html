@@ -9,15 +9,16 @@
     <title>CBM</title>
 </head>
 <body>
+<div class="container">
 <div class="panel panel-default">
-   <div class="panel-heading"><strong>{{product.name}} details</strong></div>
-   <div class="card" style="width: 55rem;">
+   <div class="panel-heading" style="color:white;"><strong>{{product.name}} details</strong></div>
+   <div class="card" style="width: 55rem;" >
    <img class="img-details" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap">
      <div class="card-body">
-       <h4 class="card-text">Product: <strong>{{product.name}}</strong></h4>
-       <h4 class="card-title">Category: <strong><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></strong></h4>
-       <h4 class="card-text">Price: <strong>Ksh{{ product.price }}/=</strong></h4>
-       <h4 class="card-text">Description: <strong>{{ product.description }}</strong></h4>
+       <h4 class="card-text"><strong>Product:</strong> {{product.name}}</h4>
+       <h4 class="card-title"><strong>Category:</strong><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h4>
+       <h4 class="card-text"><strong>Description:</strong><br>{{ product.description }}</h4>
+         <h4 class="card-text"><strong>Price:</strong> Ksh{{ product.price }}/=</h4>
          <h4 class="form" ><form action="{% url "cart:cart_add" product.id %}" method="post" enctype="multipart/form-data">
          {{ cart_product_form }}
          {% csrf_token %}
@@ -26,7 +27,8 @@
      </div>
    </div>
  </div>
-
+</div>
+<br>
 </body>
 </html>
 
@@ -34,11 +36,10 @@
 .img-details{
   width: 80%;
   padding-top: 10px;
-  padding-left: 40px;
-  height: 400px;
+  height: 350px;
 }
 .card-body{
-  align-items: center;
+  float:right;
 }
 .panel-default {
     border-color: #000;
@@ -51,12 +52,15 @@
   padding-left: 40px;
 }
 body{
-  margin-top:80px ;
-  background-color: ;
+  margin-top:100px ;
+  background-color:black;
 }
 label{
   padding-left: 40px;
 }
+h4{
+    font-size:15px;
+    }
 @media screen and (max-width:650px){
   .img-details{
     width: 250px;
