@@ -63,30 +63,38 @@ def product_detail(request, id, slug):
     product = get_object_or_404(Product, id=id, slug=slug)
     categories = Category.objects.all()
     cart_product_form = CartAddProductForm()
+    items = list(Product.objects.all())
+    random_items = random.sample(items, 3)
     return render(request, 'product_detail.html', {'product': product, 'categories': categories,
-                                                   'cart_product_form': cart_product_form})
+                                                   'cart_product_form': cart_product_form, 'random_items': random_items})
 
 
 def on_sale(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()
+    items = list(Product.objects.all())
+    random_items = random.sample(items, 3)
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
-    return render(request, "on_sale.html", {'category': category, 'categories': categories, 'products': products})
+    return render(request, "on_sale.html", {'category': category, 'categories': categories, 'products': products,
+                                            'random_items': random_items})
 
 
 def search_results(request):
     categories = Category.objects.all()
+    items = list(Product.objects.all())
+    random_items = random.sample(items, 3)
     if 'name' in request. GET and request.GET["name"]:
         search_term = request.GET.get("name")
         searched_ref = Product.search_by_name(search_term)
         message = f"{search_term}"
-        return render(request, "search.html", {"message": message, "name": searched_ref, "categories": categories})
+        return render(request, "search.html", {"message": message, "name": searched_ref, "categories": categories,
+                                               'random_items': random_items})
     else:
         message = "No match for search"
-        return render(request, 'search.html')
+        return render(request, 'search.html', {'random_items': random_items})
 
 
 def register_request(request):
