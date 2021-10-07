@@ -8,10 +8,10 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item active" >
 
       {% for c in categories %}
-      <li {% if category.slug == c.slug %}class="selected"{% endif %}><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+      <li {% if category.slug == c.slug %}class="selected"{% endif %}><a style="color:white;" href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
       {% endfor %}
 
       </li>
@@ -41,7 +41,7 @@ li {
     padding:5px;
 }
 .logo {
-    height: 70px;
+    height: 50px;
     width: 100px;
 }
 </style>

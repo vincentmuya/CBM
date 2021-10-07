@@ -34,7 +34,7 @@ class SubCategory(models.Model):
     class Meta:
         ordering = ('name',)
         verbose_name = 'subcategory'
-        verbose_name_plural = 'subcategory'
+        verbose_name_plural = 'subcategories'
 
     def __str__(self):
         return self.name
