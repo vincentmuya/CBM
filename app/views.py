@@ -11,6 +11,7 @@ from requests.auth import HTTPBasicAuth
 import json
 from . mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 import requests
+import random
 
 # Create your views here.
 
@@ -48,11 +49,14 @@ def index(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     products = Product.objects.all()
+    items = list(Product.objects.all())
+    random_items = random.sample(items, 3)
     subcategory = SubCategory.objects.all()
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
-    return render(request, "index.html", {'category': category, 'categories': categories, 'products': products, 'subcategory':subcategory})
+    return render(request, "index.html", {'category': category, 'categories': categories, 'products': products,
+                                          'subcategory': subcategory, 'random_items': random_items})
 
 
 def product_detail(request, id, slug):
