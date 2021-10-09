@@ -32,6 +32,8 @@ def getAccessToken(request):
     mpesa_access_token = json.loads(r.text)
     validated_mpesa_access_token = mpesa_access_token['access_token']
     return HttpResponse(validated_mpesa_access_token)
+
+
 def lipa_na_mpesa_online(request):
     access_token = MpesaAccessToken.validated_mpesa_access_token
     api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
@@ -75,7 +77,6 @@ def product_detail(request, id, slug):
     random_items = random.sample(items, 3)
     return render(request, 'product_detail.html', {'product': product, 'categories': categories,
                                                    'cart_product_form': cart_product_form, 'random_items': random_items})
-
 
 def on_sale(request, category_slug=None):
     category = None
@@ -170,3 +171,7 @@ def password_reset_request(request):
                     return redirect("registration/password_reset_done.html")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="registration/password_reset.html", context={"password_reset_form": password_reset_form})
+
+
+def digital_press(request):
+    return render(request, 'digital_press.html')

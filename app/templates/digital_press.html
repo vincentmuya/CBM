@@ -1,0 +1,56 @@
+{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+        <section class="overlay">
+      <strong><h1 class="Digital" id="Digital">Digital Printing Solutions <br> for Production Print.</h1></strong>
+    </section>
+        <br>
+        <div class="container">
+  <h2 style="color:white;">Deliver the Brilliant Color and Quality your Customers Expect</h2>
+  <p style="color:white;">Over 50 trillion pages are printed worldwide per year, yet only 3% of these are printed digitally. The unique capabilities of Xerox digital printing solutions will help you capture this growing digital printing market, and meet the changing needs of your customers. Our innovative technology in automation, cutting-edge inkjet production and digital sheet-fed presses help you easily create stunning output in an automated and efficient way, all while reducing your costs. With a scalable production print technology offering suitable for a broad range of print providers—including in-plant, commercial printers, and agencies— the opportunities for digital printing, and the benefits it enables, are endless.
+</p>
+        <section class="overlay2">
+      <h1 class="Digital2" id="Digital2">Dreams In. Prints Out. Production Innovation </h1>
+    </section>
+  </div>
+  <br>
+  </body>
+</html>
+<style media="screen">
+body{
+
+  background-color:black;
+}
+  .overlay{
+  	background: rgba(0, 0, 0, 0.3) url('https://s3.amazonaws.com/cms.ipressroom.com/84/files/202010/5fb547042cfac23ca708eaca_Xerox-Baltoro-High-Fusion-Inkjet-Press-with-Color-Accelerator-module/Xerox-Baltoro-High-Fusion-Inkjet-Press-with-Color-Accelerator-module_40d516da-2fad-4963-8209-786a315f89eb-prv.jpg') 60% / cover fixed;
+      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+  		width: 100%;
+  		height:400px;
+  }
+    .overlay2{
+  	background: rgba(0, 0, 0, 0.3) url('https://www-fbau.fujifilm.com/-/media/FXA/4,-d-,-Company/4,-d-,2-Newsroom/2017-PIXI-banner.jpg?h=370&w=940&la=en&hash=E79DD6F567F02E304ED0FFEF414EA8CEE42340C9') 60% / cover fixed;
+      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+  		width: 100%;
+  		height:400px;
+  }
+    .Digital{
+    font-size: 50px;
+    padding-top:100px ;
+    text-align: center;
+    color:white;
+  }
+      .Digital2{
+    font-size: 50px;
+    padding-top:100px ;
+    text-align: center;
+    color:black;
+  }
+</style>
+{%endblock%}

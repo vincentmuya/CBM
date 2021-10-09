@@ -14,7 +14,8 @@ urlpatterns = [
     url("logout", views.logout_request, name="logout"),
     url('access/token', views.getAccessToken, name='get_mpesa_access_token'),
     url('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
-    url("password_reset", views.password_reset_request, name="password_reset")
+    url("password_reset", views.password_reset_request, name="password_reset"),
+    url("digital/press", views.digital_press, name="digital_press"),
 ]
 
 if settings.DEBUG:

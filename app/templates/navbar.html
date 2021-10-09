@@ -17,7 +17,9 @@
 
             {% for sub in subcategory %}
             <a class="dropdown-item" href="#">
+                {% if parent_category_id == category_id %}
                 {{ sub.name }}
+                {% endif %}
             </a>
             {% endfor %}
 
