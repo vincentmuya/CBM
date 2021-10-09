@@ -4,11 +4,15 @@
 <!--Login-->
 <div class="container py-5">
   <h1>Login</h1>
+  {% if login_form.errors %}
+            <p> Password or Username is incorrect </p>
+          {% endif %}
   <form method="POST">
     {% csrf_token %}
     {{ login_form|crispy }}
     <button class="btn btn-primary" type="submit">Login</button>
   </form>
+    <a href="{%url 'password_reset'%}">Forgot password?</a>
   <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
 </div>
 

@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('app.urls')),
+    url(r'accounts/', include('django.contrib.auth.urls')),
+    url('password_reset/done/', auth_views.PasswordResetDoneView.as_view(template_name= 'registration/password_reset_done.html'), name='password_reset_done'),
+    url('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name="registration/password_reset_confirm.html"), name='password_reset_confirm'),
+    url('reset/done/', auth_views.PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name='password_reset_complete'),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^cart/', include('cart.urls', namespace='cart')),
 

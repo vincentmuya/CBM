@@ -8,12 +8,13 @@ urlpatterns = [
     url(r'^sale$', views.on_sale, name='on_sale'),
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.product_detail, name='product_detail'),
     url(r'^search$', views.search_results, name='search_results'),
-    url(r'^(?P<category_slug>[-\w]+)/$', views.index, name='product_list_by_category'),
+    url(r'^(?P<category_slug>[-\w]+)/$',views.index, name='product_list_by_category'),
     url("register", views.register_request, name="register"),
     url("login", views.login_request, name="login"),
     url("logout", views.logout_request, name="logout"),
     url('access/token', views.getAccessToken, name='get_mpesa_access_token'),
     url('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
+    url("password_reset", views.password_reset_request, name="password_reset")
 ]
 
 if settings.DEBUG:
