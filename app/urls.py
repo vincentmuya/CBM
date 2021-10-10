@@ -17,6 +17,7 @@ urlpatterns = [
     url("password_reset", views.password_reset_request, name="password_reset"),
     url("digital/press", views.digital_press, name="digital_press"),
     url("lenovo", views.lenovo, name="lenovo"),
+    url("dell", views.dell, name="dell"),
 ]
 
 if settings.DEBUG:

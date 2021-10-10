@@ -179,3 +179,8 @@ def digital_press(request):
 
 def lenovo(request):
     return render(request, 'lenovo.html')
+
+
+def dell(request):
+    return render(request, 'dell.html')
+
