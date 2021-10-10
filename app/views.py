@@ -175,3 +175,7 @@ def password_reset_request(request):
 
 def digital_press(request):
     return render(request, 'digital_press.html')
+
+
+def lenovo(request):
+    return render(request, 'lenovo.html')
