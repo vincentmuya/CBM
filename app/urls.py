@@ -18,6 +18,7 @@ urlpatterns = [
     url("digital/press", views.digital_press, name="digital_press"),
     url("lenovo", views.lenovo, name="lenovo"),
     url("dell", views.dell, name="dell"),
+    url("hp", views.hp, name="hp"),
 ]
 
 if settings.DEBUG:

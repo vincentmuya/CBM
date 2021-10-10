@@ -1,0 +1,58 @@
+{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+        <section class="overlay">
+      <strong><h1 class="Digital" id="Digital">Premium performance &<br> support for your business</h1></strong>
+    </section>
+        <br>
+        <div class="container">
+  <h2 style="color:white;text-align: center;">Business Workflow & Printing Solutions.</h2>
+  <p style="color:white;">Streamline crucial business processes and tasks with the latest tools for efficient printer fleet management that helps reduce IT
+      workload and costs, enhances employee productivity, and offers more secure document printing. With a range of commercial products, services, and solutions,
+      HP is a trusted and experienced business partner that can help you fill gaps in your business.
+</p>
+        <section class="overlay2">
+      <h1 class="Digital2" id="Digital2">Business Workflow &<br> Printing Solutions </h1>
+    </section>
+  </div>
+  <br>
+  </body>
+</html>
+<style media="screen">
+body{
+
+  background-color:black;
+}
+  .overlay{
+  	background: rgba(0, 0, 0, 0.3) url('https://wallpaperaccess.com/full/834459.jpg') 60% / cover fixed;
+      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+  		width: 100%;
+  		height:350px;
+  }
+    .overlay2{
+  	background: rgba(0, 0, 0, 0.3) url('https://api.time.com/wp-content/uploads/2016/04/hp-spectre-13-3_aerial-view.jpg') 60% / cover fixed;
+      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+  		width: 100%;
+  		height:400px;
+  }
+    .Digital{
+    font-size: 50px;
+    padding-top:100px ;
+    text-align: center;
+    color:black;
+  }
+      .Digital2{
+    font-size: 50px;
+    padding-top:100px ;
+    text-align: center;
+    color:white;
+  }
+</style>
+{%endblock%}
