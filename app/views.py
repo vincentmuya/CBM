@@ -189,3 +189,6 @@ def hp(request):
     return render(request, 'hp.html')
 
 
+def security_surveillance(request):
+    return render(request, 'security_surveillance.html')
+

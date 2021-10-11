@@ -19,6 +19,7 @@ urlpatterns = [
     url("lenovo", views.lenovo, name="lenovo"),
     url("dell", views.dell, name="dell"),
     url("hp", views.hp, name="hp"),
+    url("security/surveillance", views.security_surveillance, name="security_surveillance"),
 ]
 
 if settings.DEBUG:
