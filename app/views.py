@@ -175,7 +175,8 @@ def password_reset_request(request):
 
 
 def digital_press(request):
-    return render(request, 'digital_press.html')
+    comp = Computer.objects.filter(compcategory__parent_id=26)
+    return render(request, 'digital_press.html', {"comp": comp})
 
 
 def lenovo(request):

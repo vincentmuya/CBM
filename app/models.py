@@ -79,9 +79,9 @@ class Computer(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     image = models.ImageField(upload_to="posts/", blank=True, null=True)
-    stock = models.PositiveIntegerField(null=True)
+    stock = models.PositiveIntegerField(null=True, blank=True)
     available = models.BooleanField(default=True)
     compcategory = models.ForeignKey(
         'CompCategory',

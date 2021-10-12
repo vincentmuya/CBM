@@ -11,19 +11,22 @@
 		<div class="content animated fadeInLeft">
 <!--			<span class="bg animated fadeInDown">EXCLUSIVE</span>-->
 			<h1>{{ comp.title }}</h1>
-			<p>{{ comp.description }}</p>
+			<p style="color:black;">{{ comp.description }}</p>
 
 			<div class="button">
-				<a href="#">$115</a><a class="cart-btn" href="#"><i class="cart-icon ion-bag"></i>ADD TO CART</a>
+				<a href="#">KSH{{ comp.price }}</a><a class="cart-btn" href="#"><i class="cart-icon ion-bag"></i>ADD TO CART</a>
 			</div>
 
 		</div>
-		<img class="comimg" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
+		<img class="compimg" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
 	</div>
 </div>
   </body>
 </html>
 <style media="screen">
+body{
+  margin-top:70px ;
+}
 * {
 	box-sizing: border-box;
 }
@@ -35,21 +38,22 @@
 	font-family: Montserrat;
 	background: #262626;
 	width: 100%;
-	height: 100vh;
+<!--	height: 100vh;-->
 }
 
 .outer {
 	position: relative;
 	background: #fff;
-	height: 350px;
-	width: 550px;
+	height: 550px;
+	width: 650px;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 }
 
-.comimg {
+.compimg {
 	position: absolute;
+	 margin-top:100px ;
 	top: 0px;
 	right: -20px;
 	z-index: 0;
@@ -70,9 +74,8 @@ h1 {
 
 p {
 	width: 280px;
-	font-size: 13px;
+	font-size: 15px;
 	line-height: 1.4;
-	color: #aaa;
 	margin: 20px 0;
 
 }
@@ -98,7 +101,7 @@ p {
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
-	font-size: 11px;
+	font-size: 13px;
 	color: #111;
 	text-decoration: none;
 	padding: 10px 15px;

@@ -14,10 +14,25 @@
   <h2 style="color:white;">Deliver the Brilliant Color and Quality your Customers Expect</h2>
   <p style="color:white;">Over 50 trillion pages are printed worldwide per year, yet only 3% of these are printed digitally. The unique capabilities of Xerox digital printing solutions will help you capture this growing digital printing market, and meet the changing needs of your customers. Our innovative technology in automation, cutting-edge inkjet production and digital sheet-fed presses help you easily create stunning output in an automated and efficient way, all while reducing your costs. With a scalable production print technology offering suitable for a broad range of print providers—including in-plant, commercial printers, and agencies— the opportunities for digital printing, and the benefits it enables, are endless.
 </p>
+            {%for comp in comp %}
+        <ul class="listing">
+  <li class="product">
+    <a class="img-wrapper" href="{{ comp.get_absolute_url }}">
+      <img src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    </a>
+
+    <div class="info">
+      <div class="title">{{ comp.title }}</div>
+    </div>
+
+  </li>
+{%endfor%}
+</ul>
+            </div>
         <section class="overlay2">
       <h1 class="Digital2" id="Digital2">Dreams In. Prints Out. Production Innovation </h1>
     </section>
-  </div>
+
   <br>
   </body>
 </html>
@@ -52,5 +67,168 @@ body{
     text-align: center;
     color:black;
   }
+
+  *
+{
+  box-sizing: border-box;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+}
+.listing
+{
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+  display: flex;
+<!--  flex-wrap: wrap;-->
+  justify-content: space-between;
+
+<!--  /*just for pen positioning*/-->
+<!--  position: absolute;-->
+<!--  top: 20%;-->
+<!--  left: 50%;-->
+<!--  transform: translateX(-50%);-->
+
+<!--}-->
+
+.product
+{
+  width: 240px;
+  position: relative;
+}
+
+.product a
+{
+  text-decoration: none;
+}
+.img-wrapper img {
+    width: 250px;
+    height: 200px;
+}
+.img-wrapper
+{
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 1px solid #afafaf;
+  border-bottom: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.img-wrapper img
+{
+
+}
+
+.info
+{
+  width: 100%;
+  background: #000;
+  color: #fff;
+  position: relative;
+  padding: 40px 10px 20px 10px;
+  text-align: center;
+
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+  backface-visibility: hidden;
+  transition-property: color,height;
+  transition-duration: 0.3s,0.4s;
+  transition-timing-function: ease-out;
+  height: 83px;
+}
+
+.info:before
+{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  transform: scaleY(0);
+  transform-origin: 50%;
+  transition: transform 0.3s ease-out;
+}
+
+.info:after
+{
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  left: calc(50% - 11px);
+  bottom: 0;
+  border-width: 10px 10px 0 10px;
+  border-color: black transparent transparent transparent;
+}
+
+.product:hover .info
+{
+  height: 40px;
+}
+
+.product:hover .info:before
+{
+  transform: scaleY(0.7);
+}
+
+.product:hover .info:after
+{
+  visibility: visible;
+  transform: translateY(10px);
+}
+
+.title
+{
+  transition: transform 0.3s ease-out;
+}
+.title a
+{
+  color: inherit;
+}
+.product:hover .title
+{
+  transform: translateY(-18px);
+  font-weight: bold;
+  color: #000;
+}
+
+.price
+{
+  background: #e32d2c;
+  position: absolute;
+  font-size: 1.3em;
+  padding: 4px 13px;
+  top: -15px;
+  right: 10px;
+}
+
+.price.sale
+{
+  background: #00ba2f;
+}
+
+.price.old
+{
+  font-size: 0.95em;
+  padding: 4px 6px;
+  text-decoration: line-through;
+  top: -43px;
+}
+
+.product:hover .actions-wrapper *
+{
+  visibility: visible;
+}
+
+
 </style>
 {%endblock%}
