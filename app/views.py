@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Product, Category, SubCategory
+from .models import Product, Category, SubCategory, Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
@@ -178,7 +178,8 @@ def digital_press(request):
 
 
 def lenovo(request):
-    return render(request, 'lenovo.html')
+    comp = Computer.objects.filter(compcategory__parent_id=17)
+    return render(request, 'lenovo.html', {"comp": comp})
 
 
 def dell(request):
