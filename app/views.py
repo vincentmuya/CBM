@@ -78,6 +78,7 @@ def product_detail(request, id, slug):
     return render(request, 'product_detail.html', {'product': product, 'categories': categories,
                                                    'cart_product_form': cart_product_form, 'random_items': random_items})
 
+
 def on_sale(request, category_slug=None):
     category = None
     categories = Category.objects.all()
@@ -193,3 +194,7 @@ def hp(request):
 def security_surveillance(request):
     return render(request, 'security_surveillance.html')
 
+
+def comp_detail(request, id, slug):
+    comp = get_object_or_404(Computer, id=id, slug=slug)
+    return render(request, 'comp_detail.html', {'comp': comp})

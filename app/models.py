@@ -78,8 +78,11 @@ class Product(models.Model):
 class Computer(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
-    image = models.ImageField(upload_to="posts/", blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
+    image = models.ImageField(upload_to="posts/", blank=True, null=True)
+    stock = models.PositiveIntegerField(null=True)
+    available = models.BooleanField(default=True)
     compcategory = models.ForeignKey(
         'CompCategory',
         related_name="computers",
@@ -95,6 +98,9 @@ class Computer(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('comp_detail', args=[self.id, self.slug])
 
 
 class CompCategory(MPTTModel):
