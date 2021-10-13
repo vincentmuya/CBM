@@ -129,3 +129,6 @@ class CompCategory(MPTTModel):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('computer_list_by_compcategory', args=[self.slug])

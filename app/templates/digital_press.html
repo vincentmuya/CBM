@@ -7,6 +7,9 @@
   </head>
   <body>
         <section class="overlay">
+            {%for cat in category %}
+        <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+            {%endfor%}
       <strong><h1 class="Digital" id="Digital">Digital Printing Solutions <br> for Production Print.</h1></strong>
     </section>
         <br>
@@ -14,6 +17,11 @@
   <h2 style="color:white;">Deliver the Brilliant Color and Quality your Customers Expect</h2>
   <p style="color:white;">Over 50 trillion pages are printed worldwide per year, yet only 3% of these are printed digitally. The unique capabilities of Xerox digital printing solutions will help you capture this growing digital printing market, and meet the changing needs of your customers. Our innovative technology in automation, cutting-edge inkjet production and digital sheet-fed presses help you easily create stunning output in an automated and efficient way, all while reducing your costs. With a scalable production print technology offering suitable for a broad range of print providers—including in-plant, commercial printers, and agencies— the opportunities for digital printing, and the benefits it enables, are endless.
 </p>
+
+            {%for press_cat in press_category %}
+        <li {% if compcategory.slug == press_cat.slug %}class="selected"{% endif %}><a href="{{ press_cat.get_absolute_url }}">{{ press_cat.name }}</a></li>
+            {%endfor%}
+
             {%for comp in comp %}
         <ul class="listing">
   <li class="product">
@@ -115,10 +123,6 @@ body{
   text-align: center;
 }
 
-.img-wrapper img
-{
-
-}
 
 .info
 {

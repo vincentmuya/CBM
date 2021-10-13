@@ -6,18 +6,7 @@
     <title></title>
   </head>
   <body>
-        <section class="overlay">
-<!--      <strong><h1 class="Digital" id="Digital">Digital Printing Solutions <br> for Production Print.</h1></strong>-->
-    </section>
-        <br>
         <div class="container">
-  <h2 style="color:white;text-align: center;">Changing tomorrow, today.</h2>
-  <p style="color:white;">You and your business have the power to change the world. But first, you need to tackle today’s challenges. At Lenovo, we’re always in pursuit of new solutions to meet not only the challenges you face today, but tomorrow and beyond. From cybersecurity, to innovative ways to increase productivity, Lenovo solutions powered by Intel® Evo™ vPro® platform are built for what IT needs, and users want.
-</p>
-
-            {%for cat in category %}
-        <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
-            {%endfor%}
 
         {%for comp in comp %}
         <ul class="listing">
@@ -41,17 +30,13 @@
 </ul>
 </div>
 
-        <section class="overlay2">
-      <h1 class="Digital2" id="Digital2">Our mission is to power yours </h1>
-    </section>
-
-  <br>
   </body>
 </html>
 <style media="screen">
 body{
 
   background-color:black;
+  padding-top:100px;
 }
   .overlay{
   	background: rgba(0, 0, 0, 0.3) url('https://wallpapercave.com/wp/wp3713814.png') 60% / cover fixed;
@@ -124,9 +109,9 @@ body{
   text-align: center;
 }
 
-.img-wrapper img
-{
-
+.img-wrapper img {
+    width: 250px;
+    height: 200px;
 }
 
 .info

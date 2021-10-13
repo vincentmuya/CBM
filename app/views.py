@@ -176,12 +176,14 @@ def password_reset_request(request):
 
 def digital_press(request):
     comp = Computer.objects.filter(compcategory__parent_id=26)
-    return render(request, 'digital_press.html', {"comp": comp})
+    press_category = CompCategory.objects.filter(parent_id__id=26)
+    return render(request, 'digital_press.html', {"comp": comp, "press_category": press_category})
 
 
 def lenovo(request):
     comp = Computer.objects.filter(compcategory__parent_id=17)
-    return render(request, 'lenovo.html', {"comp": comp})
+    category = CompCategory.objects.filter(parent_id__id=17)
+    return render(request, 'lenovo.html', {"comp": comp, "category": category})
 
 
 def dell(request):
@@ -193,9 +195,21 @@ def hp(request):
 
 
 def security_surveillance(request):
-    return render(request, 'security_surveillance.html')
+    comp = Computer.objects.filter(compcategory__parent_id=29)
+    category = CompCategory.objects.filter(parent_id__id=29)
+    return render(request, 'security_surveillance.html', {"comp": comp, "category": category})
 
 
 def comp_detail(request, id, slug):
     comp = get_object_or_404(Computer, id=id, slug=slug)
     return render(request, 'comp_detail.html', {'comp': comp})
+
+
+def category(request, compcategory_slug=None):
+    compcategory = None
+    comp = Computer.objects.all()
+    category = CompCategory.objects.all()
+    if compcategory_slug:
+        compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
+        comp = comp.filter(compcategory=compcategory)
+    return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory})
