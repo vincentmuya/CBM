@@ -12,16 +12,29 @@
 <br>
 <h4>On Sale/ New Arrivals</h4>
 <div class="row" id="row">
-          {%for product in products %}
-          <div class="card" id="block">
-            <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Card image cap"></a>
-            <div class="card-body">
-              <h5 class="card-title">{{ product.name }}</h5>
-              <p class="card-text">Ksh {{ product.price }}/=</p>
-            </div>
-          </div>
+          {%for computer in computers %}
+
+    <ul class="listing">
+  <li class="product">
+    <a class="img-wrapper" href="{{ computer.get_absolute_url }}">
+      <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    </a>
+
+    <div class="info">
+      <div class="title">{{ computer.title }}</div>
+      <div class="price">KSH{{ computer.price }}</div>
+
+    </div>
+
+    <div class="actions-wrapper">
+      <a href="#" class="add-btn wishlist">Wishlist</a>
+      <a href="#" class="add-btn cart">Cart</a>
+    </div>
+  </li>
+</ul>
           {%endfor%}
         </div>
+
 {%include 'card_carousel.html'%}
 </body>
 </html>
@@ -34,32 +47,6 @@ body{
 #row {
     width: 100%;
     margin: 0 auto;
-  }
-
-  #block {
-    width: 15rem;
-    float: left;
-  }
-
-
-  .card {
-    padding: 15px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    margin: 15px;
-
-  }
-
-  .card-img-top {
-    height: 150px;
-    width: 150px;
-  }
-
-  .card-title {
-    /* color: black; */
-  }
-
-  .card:hover {
-    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
   }
 </style>
 {%endblock%}

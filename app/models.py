@@ -102,6 +102,11 @@ class Computer(models.Model):
     def get_absolute_url(self):
         return reverse('comp_detail', args=[self.id, self.slug])
 
+    @classmethod
+    def search_by_name(cls, search_term):
+        search_result = cls.objects.filter(name__icontains=search_term)
+        return search_result
+
 
 class CompCategory(MPTTModel):
     name = models.CharField(max_length=200)

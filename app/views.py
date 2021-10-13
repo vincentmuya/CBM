@@ -55,18 +55,13 @@ def lipa_na_mpesa_online(request):
     return HttpResponse('success')
 
 
-def index(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    items = list(Product.objects.all())
-    random_items = random.sample(items, 3)
-    subcategory = SubCategory.objects.all()
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    return render(request, "index.html", {'category': category, 'categories': categories, 'products': products,
-                                          'subcategory': subcategory, 'random_items': random_items})
+def index(request):
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, "index.html", {'random_items': random_items, 'random_items2': random_items2,
+                                          'random_items3': random_items3})
 
 
 def product_detail(request, id, slug):
@@ -79,17 +74,14 @@ def product_detail(request, id, slug):
                                                    'cart_product_form': cart_product_form, 'random_items': random_items})
 
 
-def on_sale(request, category_slug=None):
-    category = None
-    categories = Category.objects.all()
-    products = Product.objects.all()
-    items = list(Product.objects.all())
-    random_items = random.sample(items, 3)
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = products.filter(category=category)
-    return render(request, "on_sale.html", {'category': category, 'categories': categories, 'products': products,
-                                            'random_items': random_items})
+def on_sale(request):
+    computers = Computer.objects.all()
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, "on_sale.html", {'computers': computers, 'random_items': random_items,
+                                            'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def search_results(request):
@@ -176,8 +168,8 @@ def password_reset_request(request):
 
 def digital_press(request):
     comp = Computer.objects.filter(compcategory__parent_id=26)
-    press_category = CompCategory.objects.filter(parent_id__id=26)
-    return render(request, 'digital_press.html', {"comp": comp, "press_category": press_category})
+    category = CompCategory.objects.filter(parent_id__id=26)
+    return render(request, 'digital_press.html', {"comp": comp, "category": category})
 
 
 def lenovo(request):
@@ -206,10 +198,10 @@ def comp_detail(request, id, slug):
 
 
 def category(request, compcategory_slug=None):
-    compcategory = None
     comp = Computer.objects.all()
     category = CompCategory.objects.all()
+    category_by_product = CompCategory.objects.filter(parent_id__id=None)
     if compcategory_slug:
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
-    return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory})
+    return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory, "category_by_product":category_by_product})

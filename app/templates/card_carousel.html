@@ -19,96 +19,82 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
-                                {%for product in random_items %}
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <a href="{{ product.get_absolute_url }}"><img class="img-fluid" alt="100%x280" src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}"></a>
-                                        <div class="card-body">
-                                            <h4 class="card-title">{{ product.name }}</h4>
-                                            <p class="card-text">{{ product.price }}</p>
+                                {%for computer in random_items %}
+                                            <ul class="listing">
+                                      <li class="product">
+                                        <a class="img-wrapper" href="{{ comp.get_absolute_url }}">
+                                          <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+                                        </a>
+
+                                        <div class="info">
+                                          <div class="title">{{ computer.title }}</div>
+                                          <div class="price">KSH{{ computer.price }}</div>
 
                                         </div>
 
-                                    </div>
-                                </div>
-                                {%endfor%}
-
-
-
+                                        <div class="actions-wrapper">
+                                          <a href="#" class="add-btn wishlist">Wishlist</a>
+                                          <a href="#" class="add-btn cart">Cart</a>
+                                        </div>
+                                      </li>
+                                                </ul>
+                                    {%endfor%}
                             </div>
                         </div>
+
                         <div class="carousel-item">
                             <div class="row">
+                                        {%for computer in random_items2 %}
+                                            <ul class="listing">
+                                      <li class="product">
+                                        <a class="img-wrapper" href="{{ computer.get_absolute_url }}">
+                                          <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+                                        </a>
 
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                        <div class="info">
+                                          <div class="title">{{ computer.title }}</div>
+                                          <div class="price">KSH{{ computer.price }}</div>
 
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
+                                        <div class="actions-wrapper">
+                                          <a href="#" class="add-btn wishlist">Wishlist</a>
+                                          <a href="#" class="add-btn cart">Cart</a>
                                         </div>
-                                    </div>
-                                </div>
+                                      </li>
+                                                </ul>
+                                    {%endfor%}
 
                             </div>
                         </div>
+
+
                         <div class="carousel-item">
                             <div class="row">
+        {%for computer in random_items3 %}
+        <ul class="listing">
+  <li class="product">
+    <a class="img-wrapper" href="{{ comp.get_absolute_url }}">
+      <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    </a>
 
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ee8417f0ea2a50d53a12665820b54e23">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class="info">
+      <div class="title">{{ computer.title }}</div>
+      <div class="price">KSH{{ computer.price }}</div>
 
-                                        </div>
+    </div>
 
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=8ac55cf3a68785643998730839663129">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class="actions-wrapper">
+      <a href="#" class="add-btn wishlist">Wishlist</a>
+      <a href="#" class="add-btn cart">Cart</a>
+    </div>
+  </li>
+            </ul>
+{%endfor%}
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 mb-3">
-                                    <div class="card">
-                                        <img class="img-fluid" alt="100%x280" src="https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=5ee4fd5d19b40f93eadb21871757eda6">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Special title treatment</h4>
-                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -119,5 +105,226 @@
 .img-fluid {
     max-width: 100%;
     height: 200px;
+}
+*
+{
+  box-sizing: border-box;
+  font-family: 'Open Sans', 'Arial', sans-serif;
+}
+.listing
+{
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+  display: flex;
+<!--  flex-wrap: wrap;-->
+  justify-content: space-between;
+
+<!--  /*just for pen positioning*/-->
+<!--  position: absolute;-->
+<!--  top: 20%;-->
+<!--  left: 50%;-->
+<!--  transform: translateX(-50%);-->
+
+<!--}-->
+
+.product
+{
+  width: 240px;
+  position: relative;
+}
+
+.product a
+{
+  text-decoration: none;
+}
+
+.img-wrapper
+{
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: 1px solid #afafaf;
+  border-bottom: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.img-wrapper img {
+    width: 250px;
+    height: 200px;
+}
+.info
+{
+  width: 100%;
+  background: #000;
+  color: #fff;
+  position: relative;
+  padding: 40px 10px 20px 10px;
+  text-align: center;
+
+  vertical-align: middle;
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0,0,0,0);
+  backface-visibility: hidden;
+  transition-property: color,height;
+  transition-duration: 0.3s,0.4s;
+  transition-timing-function: ease-out;
+  height: 83px;
+}
+
+.info:before
+{
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  transform: scaleY(0);
+  transform-origin: 50%;
+  transition: transform 0.3s ease-out;
+}
+
+.info:after
+{
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  border-style: solid;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  left: calc(50% - 11px);
+  bottom: 0;
+  border-width: 10px 10px 0 10px;
+  border-color: black transparent transparent transparent;
+}
+
+.product:hover .info
+{
+  height: 40px;
+}
+
+.product:hover .info:before
+{
+  transform: scaleY(0.7);
+}
+
+.product:hover .info:after
+{
+  visibility: visible;
+  transform: translateY(10px);
+}
+
+.title
+{
+  transition: transform 0.3s ease-out;
+}
+.title a
+{
+  color: inherit;
+}
+.product:hover .title
+{
+  transform: translateY(-18px);
+  font-weight: bold;
+  color: #000;
+}
+
+.price
+{
+  background: #e32d2c;
+  position: absolute;
+  font-size: 1.3em;
+  padding: 4px 13px;
+  top: -15px;
+  right: 10px;
+}
+
+.price.sale
+{
+  background: #00ba2f;
+}
+
+.price.old
+{
+  font-size: 0.95em;
+  padding: 4px 6px;
+  text-decoration: line-through;
+  top: -43px;
+}
+
+.actions-wrapper
+{
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-around;
+  visibility: hidden;
+}
+
+.actions-wrapper *
+{
+  width: 50%;
+  padding: 2px 0;
+  text-align: center;
+  color: #191919;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+.actions-wrapper *:before
+{
+  font-family: "FontAwesome";
+  margin-right: 8px;
+}
+.wishlist
+{
+  border-right: 1px solid #afafaf;
+}
+.wishlist:hover
+{
+  color: #e32d2c;
+}
+.wishlist:before
+{
+  content: "\f08a";
+}
+
+.cart:hover
+{
+  color: #0a75b9;
+}
+.cart:before
+{
+  content: "\f07a";
+}
+
+.product:hover .actions-wrapper *
+{
+  visibility: visible;
+}
+
+.note
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 4px 8px;
+  font-size: 0.9em;
+}
+
+.note.on-sale
+{
+  background: #00ba2f;
+  color: #fff;
+}
+
+.note.no-stock
+{
+  background: #191919;
+  color: #fff;
 }
     </style>

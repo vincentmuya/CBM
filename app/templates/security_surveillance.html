@@ -10,15 +10,22 @@
       <strong><h1 class="Digital" id="Digital">Smart Surveillance <br> Secure World.</h1></strong>
     </section>
         <br>
-        <div class="container">
+
+    <div  id="sidenav">
+    <ul>
+        <h4 class="cate" style=" color:white;">Categories</h4>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="">All</a></li>
+      {% for cat in category %}
+      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+        <div id="container" class="container">
   <h2 style="color:white;text-align: center;">Core Technologies.</h2>
   <p style="color:white;">Since founded, Anviz has been committed to using the world's most advanced Internet technology, information acquisition technology,
       network communication technology, data encryption technologies to develop generations of revolutionary security products and solutions.
 </p>
-               {%for cat in category %}
-        <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
-            {%endfor%}
-
         {%for comp in comp %}
         <ul class="listing">
   <li class="product">
@@ -51,6 +58,33 @@
 body{
 
   background-color:black;
+}
+#container{
+padding-left:100px;
+}
+#sidenav {
+  margin-top: 40px;
+  height: 40%;
+  width: 202px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 35px;
+}
+
+#sidenav a {
+  padding: 3px 5px 3px 13px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #2196F3;
+  display: block;
+}
+
+#sidenav a:hover {
+  color: #f1f1f1;
 }
   .overlay{
   	background: rgba(0, 0, 0, 0.3) url('https://www.anviz.com/file/files/2298') 60% / cover fixed;
