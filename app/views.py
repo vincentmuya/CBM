@@ -169,51 +169,96 @@ def password_reset_request(request):
 def digital_press(request):
     comp = Computer.objects.filter(compcategory__parent_id=26)
     category = CompCategory.objects.filter(parent_id__id=26)
-    return render(request, 'digital_press.html', {"comp": comp, "category": category})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'digital_press.html', {"comp": comp, "category": category, 'random_items': random_items,
+                                                  'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def lenovo(request):
     comp = Computer.objects.filter(compcategory__parent_id=17)
     category = CompCategory.objects.filter(parent_id__id=17)
-    return render(request, 'lenovo.html', {"comp": comp, "category": category})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'lenovo.html', {"comp": comp, "category": category, 'random_items': random_items,
+                                           'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def dell(request):
-    return render(request, 'dell.html')
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'dell.html', {'random_items': random_items, 'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def hp(request):
-    return render(request, 'hp.html')
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'hp.html', {'random_items': random_items, 'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def security_surveillance(request):
     comp = Computer.objects.filter(compcategory__parent_id=29)
     category = CompCategory.objects.filter(parent_id__id=29)
-    return render(request, 'security_surveillance.html', {"comp": comp, "category": category})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'security_surveillance.html', {"comp": comp, "category": category,
+                                                          'random_items': random_items, 'random_items2': random_items2,
+                                                          'random_items3': random_items3})
 
 
 def software(request):
     comp = Computer.objects.filter(compcategory__parent_id=33)
     category = CompCategory.objects.filter(parent_id__id=33)
-    return render(request, 'software.html', {"comp": comp, "category": category})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'software.html', {"comp": comp, "category": category, 'random_items': random_items,
+                                             'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def apc(request):
     comp = Computer.objects.filter(compcategory__parent_id=36)
     category = CompCategory.objects.filter(parent_id__id=36)
-    return render(request, 'apc.html', {"comp": comp, "category": category})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'apc.html', {"comp": comp, "category": category, 'random_items': random_items,
+                                        'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def comp_detail(request, id, slug):
     comp = get_object_or_404(Computer, id=id, slug=slug)
-    return render(request, 'comp_detail.html', {'comp': comp})
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'comp_detail.html', {'comp': comp, 'random_items': random_items,
+                                                'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def category(request, compcategory_slug=None):
     comp = Computer.objects.all()
     category = CompCategory.objects.all()
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
     category_by_product = CompCategory.objects.filter(parent_id__id=None)
     if compcategory_slug:
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
-    return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory, "category_by_product":category_by_product})
+    return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory,
+                                             "category_by_product":category_by_product, 'random_items': random_items,
+                                             'random_items2': random_items2, 'random_items3': random_items3})
