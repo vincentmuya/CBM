@@ -192,6 +192,12 @@ def security_surveillance(request):
     return render(request, 'security_surveillance.html', {"comp": comp, "category": category})
 
 
+def software(request):
+    comp = Computer.objects.filter(compcategory__parent_id=33)
+    category = CompCategory.objects.filter(parent_id__id=33)
+    return render(request, 'software.html', {"comp": comp, "category": category})
+
+
 def comp_detail(request, id, slug):
     comp = get_object_or_404(Computer, id=id, slug=slug)
     return render(request, 'comp_detail.html', {'comp': comp})
