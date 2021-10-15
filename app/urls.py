@@ -23,7 +23,7 @@ urlpatterns = [
     url("hp", views.hp, name="hp"),
     url("security/surveillance", views.security_surveillance, name="security_surveillance"),
     url("software", views.software, name="software"),
-
+    url("apc", views.apc, name="apc"),
 
 ]
 

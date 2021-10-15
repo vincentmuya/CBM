@@ -198,6 +198,12 @@ def software(request):
     return render(request, 'software.html', {"comp": comp, "category": category})
 
 
+def apc(request):
+    comp = Computer.objects.filter(compcategory__parent_id=36)
+    category = CompCategory.objects.filter(parent_id__id=36)
+    return render(request, 'apc.html', {"comp": comp, "category": category})
+
+
 def comp_detail(request, id, slug):
     comp = get_object_or_404(Computer, id=id, slug=slug)
     return render(request, 'comp_detail.html', {'comp': comp})

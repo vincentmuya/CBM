@@ -6,23 +6,15 @@
     <title></title>
   </head>
   <body>
-<h1>Hello!</h1>
   <section class="overlay">
-      <strong><h1 class="Digital" id="Digital">Software</h1></strong>
+      <strong><h1 class="Digital" id="Digital">APC Delivers Legendary Reliability<br> When Every Minute Counts</h1></strong>
     </section>
         <br>
-<div  id="sidenav">
-    <ul>
-        <h4 class="cate" style=" color:white;">Categories</h4>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="">All</a></li>
-      {% for cat in category %}
-      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name}}</a></li>
-      {% endfor %}
-    </ul>
-  </div>
         <div id="container" class="container">
-  <h2 style="color:white;text-align: center;">About software</h2>
-  <p style="color:white;">Hello!
+  <h2 style="color:white;text-align: center;">UPS power and data security that gets the job done</h2>
+  <p style="color:white;">Companies around the world and within every industry rely on products from APC to keep their data centres up and running. Our uninterruptible power supply solutions, data security,
+      and surge protector options work hard for you when maximum availability and guaranteed uptime is non-negotiable. Choose the battery backup and data protection built to ensure that business critical equipment
+      and applications are never at risk. To find the products you need, start with our power supply calculator for business solutions.
 </p>
             <br>
     {%for comp in comp %}
@@ -43,11 +35,13 @@
       <a href="#" class="add-btn cart">Cart</a>
     </div>
   </li>
-{%endfor%}
- </ul>
+    {%endfor%}
+   </ul>
 </div>
+
+
         <section class="overlay2">
-      <h1 class="Digital2" id="Digital2">Anti-Virus </h1>
+      <h1 class="Digital2" id="Digital2">Powerful backup for home networks,<br> theater and gaming </h1>
     </section>
   </body>
 </html>
@@ -57,58 +51,31 @@ body{
   background-color:black;
   padding-top:;
 }
-#container{
-padding-left:100px;
-}
-#sidenav {
-  margin-top: 40px;
-  height: 40%;
-  width: 202px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 35px;
-}
-
-#sidenav a {
-  padding: 3px 5px 3px 13px;
-  text-decoration: none;
-  font-size: 15px;
-  color: #2196F3;
-  display: block;
-}
-
-#sidenav a:hover {
-  color: #f1f1f1;
-}
   .overlay{
-  	background: rgba(0, 0, 0, 0.3) url('https://wallpapercave.com/wp/wp4570185.jpg') 60% / cover fixed;
+  	background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
       -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
       box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
   		width: 100%;
   		height:350px;
   }
      .Digital{
-    font-size: 50px;
+    font-size: 40px;
     padding-top:100px ;
     text-align: center;
-    color:black;
+    color:white;
   }
       .overlay2{
-  	background: rgba(0, 0, 0, 0.3) url('https://geekymint.com/wp-content/uploads/2021/03/antivirus.jpg') 60% / cover fixed;
+  	background: rgba(0, 0, 0, 0.3) url('https://www.apc.com/ke/en/assets/698/media/19669/1200/BE850M2_LS3-980x490.jpg') 60% / cover fixed;
       -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
       box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
   		width: 100%;
   		height:400px;
   }
-        .Digital2{
-    font-size: 50px;
+    .Digital2{
+    font-size: 40px;
     padding-top:100px ;
     text-align: center;
-    color:white;
+    color:red;
   }
   *
 {
