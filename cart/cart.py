@@ -49,7 +49,7 @@ class Cart(object):
         iterate over the items in the cart and get the products from the database.
         """
         product_ids = self.cart.keys()
-        #get the product objects and add them to the cart
+        # get the product objects and add them to the cart
         products = Product.objects.filter(id__in=product_ids)
         for product in products:
             self.cart[str(product.id)]['product'] = product
@@ -69,6 +69,6 @@ class Cart(object):
         return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
 
     def clear(self):
-        #remove cart session
+        # remove cart session
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
