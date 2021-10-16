@@ -189,11 +189,14 @@ def lenovo(request):
 
 
 def dell(request):
+    comp = Computer.objects.filter(compcategory__parent_id=22)
+    category = CompCategory.objects.filter(parent_id__id=22)
     items = list(Computer.objects.all())
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
-    return render(request, 'dell.html', {'random_items': random_items, 'random_items2': random_items2, 'random_items3': random_items3})
+    return render(request, 'dell.html', {"comp": comp, "category": category, 'random_items': random_items,
+                                         'random_items2': random_items2, 'random_items3': random_items3})
 
 
 def hp(request):
