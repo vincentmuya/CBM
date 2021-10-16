@@ -6,6 +6,15 @@
     <title></title>
   </head>
   <body>
+        <div  id="sidenav">
+    <ul>
+        <h4 class="cate" style=" color:white;">Categories</h4>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="">All</a></li>
+      {% for cat in category %}
+      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
     <div class="wrapper">
 	<div class="outer">
 		<div class="content animated fadeInLeft">
@@ -27,8 +36,36 @@
 </html>
 <style media="screen">
 body{
-  margin-top:80px ;
+  margin-top:70px ;
   background-color:black;
+}
+
+#container{
+padding-left:100px;
+}
+#sidenav {
+  margin-top: 40px;
+  height: 40%;
+  width: 202px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 35px;
+}
+
+#sidenav a {
+  padding: 3px 5px 3px 13px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #2196F3;
+  display: block;
+}
+
+#sidenav a:hover {
+  color: #f1f1f1;
 }
 * {
 	box-sizing: border-box;
