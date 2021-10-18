@@ -25,8 +25,10 @@
   <p style="color:white;">The test of the machine is the satisfaction it gives you. There isn't any other test. If the machine produces tranquility it's right. If it disturbs you
       it's wrong until either the machine or your software.
 </p>
-            <br>
-    {%for comp in comp %}
+          </div>
+        <div id="container" class="container">
+            <div class="row" id="row">
+        {%for comp in comp %}
         <ul class="listing">
   <li class="product">
     <a class="img-wrapper" href="{{ comp.get_absolute_url }}">
@@ -35,18 +37,19 @@
 
     <div class="info">
       <div class="title">{{ comp.title }}</div>
-      <div class="price">KSH{{ comp.price }}</div>
+      <div class="price">KSH{{ comp.price}}</div>
 
     </div>
-
     <div class="actions-wrapper">
       <a href="#" class="add-btn wishlist">Wishlist</a>
       <a href="#" class="add-btn cart">Cart</a>
     </div>
   </li>
+</ul>
+
 {%endfor%}
- </ul>
 </div>
+    </div>
 
   {%include 'card_carousel.html'%}
   </body>
@@ -62,8 +65,8 @@ padding-left:100px;
 }
 #sidenav {
   margin-top: 40px;
-  height: 40%;
-  width: 200px;
+  height: 38%;
+  width: 150px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -76,7 +79,7 @@ padding-left:100px;
 #sidenav a {
   padding: 3px 5px 3px 13px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 12px;
   color: white;
   display: block;
 }
