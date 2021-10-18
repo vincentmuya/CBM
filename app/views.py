@@ -178,7 +178,7 @@ def digital_press(request):
 
 
 def lenovo(request):
-    comp = Computer.objects.filter(compcategory__parent_id=17)[:4]
+    comp = Computer.objects.filter(compcategory__parent_id=17)
     category = CompCategory.objects.filter(parent_id__id=17)
     items = list(Computer.objects.all())
     random_items = random.sample(items, 4)
