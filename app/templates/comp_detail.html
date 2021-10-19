@@ -23,10 +23,18 @@
             <p><strong>Description</strong></p>
 			<p style="color:black;">{{ comp.description }}</p>
             <p style="color:black;"><strong>Category: </strong>{{ comp.compcategory }}</p>
+            <div class="row">
 			<div class="button">
-				<a href="#">KSH{{ comp.price }}</a><a class="cart-btn" href="#"><i class="cart-icon ion-bag"></i>ADD TO CART</a>
+				<a href="#">KSH{{ comp.price }}</a>
 			</div>
-
+                <div class="button">
+                <form action="{% url "cart:cart_add" comp.id %}" method="post" enctype="multipart/form-data">
+         {{ cart_product_form }}
+         {% csrf_token %}
+         <button type="button" class="btn btn-danger"><input type="submit" value="Add to cart"></button>
+       </form>
+            </div>
+          </div>
 		</div>
 		<img class="compimg" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
 	</div>

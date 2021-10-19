@@ -243,6 +243,7 @@ def apc(request):
 
 def comp_detail(request, id, slug, compcategory_slug=None):
     comp = get_object_or_404(Computer, id=id, slug=slug)
+    cart_product_form = CartAddProductForm()
     category = CompCategory.objects.all()
     items = list(Computer.objects.all())
     random_items = random.sample(items, 4)
@@ -252,7 +253,7 @@ def comp_detail(request, id, slug, compcategory_slug=None):
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
     return render(request, 'comp_detail.html', {'comp': comp, "category": category, 'random_items': random_items,
-                                                'random_items2': random_items2, 'random_items3': random_items3})
+                                                'random_items2': random_items2, 'random_items3': random_items3, 'cart_product_form': cart_product_form})
 
 
 def category(request, compcategory_slug=None):

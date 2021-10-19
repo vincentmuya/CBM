@@ -35,16 +35,16 @@
                 </thead>
                 <tbody>
                 {% for item in cart %}
-                    {% with product=item.product  %}
+                    {% with computer=item.computer  %}
                         <tr>
                             <td>
-                                <a href="{{ product.get_absolute_url }}">
-                                    <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
+                                <a href="{{ computer.get_absolute_url }}">
+                                    <img src="{% if computer.image %} {{ computer.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
                                 </a>
                             </td>
-                            <td style="color:white;">{{ product.name }}</td>
+                            <td style="color:white;">{{ computer.name }}</td>
                             <td>
-                                <form action="{% url "cart:cart_add" product.id %}" method="post">
+                                <form action="{% url "cart:cart_add" computer.id %}" method="post">
                                     {% csrf_token %}
                                     {{ item.update_quantity_form.quantity }}
                                     {{ item.update_quantity_form.update }}
@@ -52,8 +52,8 @@
                                 </form>
                             </td>
                             <td>
-                              <a href="/dialogs/{{product.seller}}"><button type="button" class="btn btn-success" name="button">Order</button></a>
-                                <a href="{% url "cart:cart_remove" product.id %}"><button type="button" class="btn btn-warning" name="button">Remove</button></a>
+                              <a href=""><button type="button" class="btn btn-success" name="button">Order</button></a>
+                                <a href="{% url "cart:cart_remove" computer.id %}"><button type="button" class="btn btn-warning" name="button">Remove</button></a>
                             </td>
                             <td style="color:white;">kshs. {{ item.price }}/=</td>
                             <td style="color:white;">kshs. {{ item.total_price }}/=</td>
@@ -72,6 +72,7 @@
             <a href="{% url "cart:check_out" %}" class="btn btn-primary">Checkout</a>
         </p>
         </div>
+        {%include 'card_carousel.html'%}
     </div>
 <style media="screen">
   body{

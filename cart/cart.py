@@ -1,6 +1,6 @@
 from decimal import Decimal
 from django.conf import settings
-from app.models import Product
+from app.models import Computer
 
 
 class Cart(object):
@@ -16,17 +16,17 @@ class Cart(object):
             cart = self.session[settings.CART_SESSION_ID]= {}
         self.cart = cart
 
-    def add(self, product, quantity=1, update_quantity=False):
+    def add(self, computer, quantity=1, update_quantity=False):
         """
         Add aproduct to the cart or update its quantity.
         """
-        product_id = str(product.id)
-        if product_id not in self.cart:
-            self.cart[product_id] = {'quantity':0, 'price':str(product.price)}
+        computer_id = str(computer.id)
+        if computer_id not in self.cart:
+            self.cart[computer_id] = {'quantity':0, 'price':str(computer.price)}
         if update_quantity:
-            self.cart[product_id]['quantity'] = quantity
+            self.cart[computer_id]['quantity'] = quantity
         else:
-            self.cart[product_id]['quantity'] += quantity
+            self.cart[computer_id]['quantity'] += quantity
         self.save()
 
     def save(self):
@@ -35,24 +35,24 @@ class Cart(object):
         #mark the session as "modified" to make sure its saved
         self.session.modifed = True
 
-    def remove(self, product):
+    def remove(self, computer):
         """
         Remove a product from the cart
         """
-        product_id = str(product.id)
-        if product_id in self.cart:
-            del self.cart[product_id]
+        computer_id = str(computer.id)
+        if computer_id in self.cart:
+            del self.cart[computer_id]
             self.save()
 
     def __iter__(self):
         """
         iterate over the items in the cart and get the products from the database.
         """
-        product_ids = self.cart.keys()
-        # get the product objects and add them to the cart
-        products = Product.objects.filter(id__in=product_ids)
-        for product in products:
-            self.cart[str(product.id)]['product'] = product
+        computer_ids = self.cart.keys()
+        # get the computer objects and add them to the cart
+        computers = Computer.objects.filter(id__in=computer_ids)
+        for computer in computers:
+            self.cart[str(computer.id)]['computer'] = computer
 
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])
