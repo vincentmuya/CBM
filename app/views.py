@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
-from .forms import NewUserForm
+from .forms import NewUserForm, QuoteForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -20,7 +20,8 @@ from django.db.models.query_utils import Q
 from django.utils.http import urlsafe_base64_encode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
-
+from django.core.mail import mail_admins, send_mail
+from django.conf import settings
 # Create your views here.
 
 
@@ -263,3 +264,22 @@ def category(request, compcategory_slug=None):
     return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory,
                                              "category_by_product":category_by_product, 'random_items': random_items,
                                              'random_items2': random_items2, 'random_items3': random_items3})
+
+
+def quote(request):
+    if request.method == 'POST':
+        form = QuoteForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            sender = form.cleaned_data['email']
+            subject = "You have a new Quote from {}:{}".format(name, sender)
+            application = "Application: {}".format(form.cleaned_data['application'])
+            product = "Product: {}".format(form.cleaned_data['product'])
+            phone_number = "Phone Number: {}".format(form.cleaned_data['phone_number'])
+            send_mail(subject, application, product, phone_number)
+            # quote = form.save(commit=False)
+            # quote.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = QuoteForm()
+    return render(request, 'quote.html', {'form': form})
