@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Product, Category, SubCategory, Computer, CompCategory
+from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import NewUserForm
 from django.contrib.auth import login, authenticate, logout
@@ -62,16 +62,6 @@ def index(request):
     random_items3 = random.sample(items, 4)
     return render(request, "index.html", {'random_items': random_items, 'random_items2': random_items2,
                                           'random_items3': random_items3})
-
-
-def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug)
-    categories = Category.objects.all()
-    cart_product_form = CartAddProductForm()
-    items = list(Product.objects.all())
-    random_items = random.sample(items, 3)
-    return render(request, 'product_detail.html', {'product': product, 'categories': categories,
-                                                   'cart_product_form': cart_product_form, 'random_items': random_items})
 
 
 def on_sale(request):
