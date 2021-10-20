@@ -31,8 +31,8 @@ class Computer(models.Model):
         return reverse('comp_detail', args=[self.id, self.slug])
 
     @classmethod
-    def search_by_name(cls, search_term):
-        search_result = cls.objects.filter(name__icontains=search_term)
+    def search_by_title(cls, search_term):
+        search_result = cls.objects.filter(title__icontains=search_term)
         return search_result
 
 

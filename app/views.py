@@ -75,15 +75,18 @@ def on_sale(request):
 
 
 def search_results(request):
-    categories = Category.objects.all()
-    items = list(Product.objects.all())
-    random_items = random.sample(items, 3)
+    categories = CompCategory.objects.all()
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
     if 'name' in request. GET and request.GET["name"]:
         search_term = request.GET.get("name")
-        searched_ref = Product.search_by_name(search_term)
+        searched_ref = Computer.search_by_title(search_term)
         message = f"{search_term}"
         return render(request, "search.html", {"message": message, "name": searched_ref, "categories": categories,
-                                               'random_items': random_items})
+                                               'random_items': random_items, 'random_items2': random_items2,
+                                               'random_items3': random_items3})
     else:
         message = "No match for search"
         return render(request, 'search.html', {'random_items': random_items})

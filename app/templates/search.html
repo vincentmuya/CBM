@@ -1,23 +1,37 @@
 {%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
-<div class="col-md-8">
         {% if name%}
           <h2 style="text-align:center; color:white;" class="name">Found {{ name|length }} of searched term {{message}}</h2>
         {% else %}
           <h2 style="text-align:center;" class="name"> Found 0 name for the search term {{message}}</h2>
         {% endif %}
 
-      {% if name %}
+
+            <div id="container" class="container">
+            <div class="row" id="row">
+        {% if name %}
         {% for result in name%}
-      <div class="card" id="" style="width: 18rem;">
-        <a href="{{ result.get_absolute_url }}"><img class="card-img-top" src="{{ result.image.url}}" alt="Card image cap"></a>
-        <div class="card-body">
-          <h4 class="card-title">{{result.name}}</h4>
-          <p class="card-text">Ksh {{result.price}}/=</p>
-        </div>
-      </div>
+                <ul class="listing">
+  <li class="product">
+    <a class="img-wrapper" href="{{ result.get_absolute_url }}">
+      <img src="{{ result.image.url}}" alt="Image" />
+    </a>
+
+    <div class="info">
+      <div class="title">{{result.title}}</div>
+      <div class="price">KSH:{{ result.price}}</div>
+
+    </div>
+    <div class="actions-wrapper">
+      <a href="#" class="add-btn wishlist">Wishlist</a>
+      <a href="#" class="add-btn cart">Cart</a>
+    </div>
+  </li>
+</ul>
         {% endfor %}
       {% endif %}
 </div>
+    </div>
+
 <br>
 {%include 'card_carousel.html'%}
 
