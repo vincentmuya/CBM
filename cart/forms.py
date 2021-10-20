@@ -13,6 +13,3 @@ class ShippingInformationForm(forms.Form):
     class Meta:
         model = BuyerInformation
         fields = ('buyer_name', 'buyer_number', 'buyer_location',)
-        exclude = []
-        widges = {
-        }

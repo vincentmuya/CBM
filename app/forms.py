@@ -21,3 +21,9 @@ class NewUserForm(UserCreationForm):
         return user
 
 
+class QuoteForm(forms.Form):
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    email = forms.EmailField(required=True)
+    phone_number = forms.IntegerField()
+    application = forms.CharField()
