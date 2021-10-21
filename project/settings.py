@@ -32,8 +32,6 @@ ALLOWED_HOSTS = ["*"]
 
 CART_SESSION_ID = 'cart'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 SERVER_EMAIL = 'vincentmuya13@gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -47,8 +45,15 @@ ADMINS = [
     ('Vincent', 'vincentmuya13@gmail.com'),
 
 ]
-
 MANAGERS = ADMINS
+
+USE_THOUSAND_SEPARATOR = True
+
+THOUSAND_SEPARATOR = ','
+
+DECIMAL_SEPARATOR = '.'
+
+NUMBER_GROUPING = 3
 # Application definition
 
 INSTALLED_APPS = [

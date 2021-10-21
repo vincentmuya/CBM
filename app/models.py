@@ -7,6 +7,7 @@ from django.dispatch import receiver
 from django.urls import reverse
 from slugify import slugify
 from mptt.models import MPTTModel, TreeForeignKey
+from django.core.validators import validate_comma_separated_integer_list
 
 
 # Create your models here.
@@ -14,7 +15,7 @@ class Computer(models.Model):
     title = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
-    price = models.IntegerField( null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True)
     image = models.ImageField(upload_to="posts/", blank=True, null=True)
     stock = models.PositiveIntegerField(null=True, blank=True)
     available = models.BooleanField(default=True)
