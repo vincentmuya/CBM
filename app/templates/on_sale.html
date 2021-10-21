@@ -20,16 +20,15 @@
       <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
     </a>
 
-    <div class="info">
-      <div class="title">{{ computer.title }}</div>
-      <div class="price">KSH{{ computer.price }}</div>
+                <div class="info">
+                  <div class="title">{{ computer.title }}</div>
+                    {% if computer.price == None %}
+                    <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
+                        {% else %}
+                  <div class="price">KSH:{{ computer.price }}</div>
+                    {% endif %}
+                </div>
 
-    </div>
-
-    <div class="actions-wrapper">
-      <a href="#" class="add-btn wishlist">Wishlist</a>
-      <a href="#" class="add-btn cart">Cart</a>
-    </div>
   </li>
 </ul>
           {%endfor%}
