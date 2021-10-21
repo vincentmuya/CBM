@@ -272,14 +272,23 @@ def quote(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             sender = form.cleaned_data['email']
-            subject = "You have a new Quote from {}:{}".format(name, sender)
+            phone_number = "Phone Number: {}".format(form.cleaned_data['phone_number'])
+            subject = "You have a new Quote from {}:{}:{}".format(name, sender, phone_number)
             application = "Application: {}".format(form.cleaned_data['application'])
             product = "Product: {}".format(form.cleaned_data['product'])
-            phone_number = "Phone Number: {}".format(form.cleaned_data['phone_number'])
-            send_mail(subject, application, product, phone_number)
-            # quote = form.save(commit=False)
-            # quote.save()
-            return HttpResponseRedirect('/')
+            message = "The quote is for {}: and the use is for {}".format(product, application)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('received.html')
     else:
         form = QuoteForm()
     return render(request, 'quote.html', {'form': form})
+
+
+def received(request):
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    return render(request, 'received.html', {'random_items': random_items, 'random_items2': random_items2,
+                                             'random_items3': random_items3})

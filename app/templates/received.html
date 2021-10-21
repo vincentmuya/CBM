@@ -1,0 +1,27 @@
+{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CBM</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Quote Request Has Been Received And Our Team Will Be Intouch</h2>
+
+        {%include 'card_carousel.html'%}
+    </div>
+<br>
+</body>
+</html>
+<style media="screen">
+body{
+ background-color:black;
+ color: white;
+ padding-top: 200px;
+ }
+</style>
+{%endblock%}
