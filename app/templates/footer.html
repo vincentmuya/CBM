@@ -1,3 +1,4 @@
+ {%block content%} {% load bootstrap4 %}
 <!-- Footer -->
 <footer class="page-footer font-small blue pt-4", style="background-color: #343a40; color:white;">
 
@@ -7,14 +8,7 @@
     <!-- Grid row -->
     <div class="row">
 
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
 
-        <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
-
-      </div>
       <!-- Grid column -->
 
       <hr class="clearfix w-100 d-md-none pb-3">
@@ -66,7 +60,16 @@
 
       </div>
       <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
 
+        <!-- Content -->
+        <h5 class="">Feedback Or Inquiry</h5>
+   <form method="post" >
+      {% csrf_token %}
+        {% bootstrap_form feedback_form %}
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+      </div>
     </div>
     <!-- Grid row -->
 
@@ -80,3 +83,9 @@
 
 </footer>
 <!-- Footer -->
+ <style media="screen">
+ textarea.form-control {
+    height: 100px;
+}
+</style>
+{%endblock%}

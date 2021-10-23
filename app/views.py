@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
-from .forms import NewUserForm, QuoteForm
+from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -61,8 +61,20 @@ def index(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, "index.html", {'random_items': random_items, 'random_items2': random_items2,
-                                          'random_items3': random_items3})
+                                          'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
 def on_sale(request):
@@ -71,8 +83,21 @@ def on_sale(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, "on_sale.html", {'computers': computers, 'random_items': random_items,
-                                            'random_items2': random_items2, 'random_items3': random_items3})
+                                            'random_items2': random_items2, 'random_items3': random_items3,
+                                            'feedback_form': feedback_form})
 
 
 def search_results(request):
@@ -81,15 +106,28 @@ def search_results(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     if 'name' in request. GET and request.GET["name"]:
         search_term = request.GET.get("name")
         searched_ref = Computer.search_by_title(search_term)
         message = f"{search_term}"
         return render(request, "search.html", {"message": message, "name": searched_ref, "categories": categories,
                                                'random_items': random_items, 'random_items2': random_items2,
-                                               'random_items3': random_items3})
+                                               'random_items3': random_items3, 'feedback_form': feedback_form})
     else:
         message = "No match for search"
+
         return render(request, 'search.html', {'random_items': random_items})
 
 
@@ -167,8 +205,21 @@ def digital_press(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'digital_press.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                                  'random_items2': random_items2, 'random_items3': random_items3})
+                                                  'random_items2': random_items2, 'random_items3': random_items3,
+                                                  'feedback_form': feedback_form})
 
 
 def lenovo(request):
@@ -178,8 +229,21 @@ def lenovo(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'lenovo.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                           'random_items2': random_items2, 'random_items3': random_items3})
+                                           'random_items2': random_items2, 'random_items3': random_items3,
+                                           'feedback_form': feedback_form})
 
 
 def dell(request):
@@ -189,8 +253,20 @@ def dell(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'dell.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                         'random_items2': random_items2, 'random_items3': random_items3})
+                                         'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form':feedback_form})
 
 
 def hp(request):
@@ -198,7 +274,20 @@ def hp(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
-    return render(request, 'hp.html', {'random_items': random_items, 'random_items2': random_items2, 'random_items3': random_items3})
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'hp.html', {'random_items': random_items, 'random_items2': random_items2,
+                                       'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
 def security_surveillance(request):
@@ -208,9 +297,21 @@ def security_surveillance(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'security_surveillance.html', {"comp": comp, "category": category,
                                                           'random_items': random_items, 'random_items2': random_items2,
-                                                          'random_items3': random_items3})
+                                                          'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
 def software(request):
@@ -220,8 +321,21 @@ def software(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'software.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                             'random_items2': random_items2, 'random_items3': random_items3})
+                                             'random_items2': random_items2, 'random_items3': random_items3,
+                                             'feedback_form': feedback_form})
 
 
 def apc(request):
@@ -231,8 +345,20 @@ def apc(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'apc.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                        'random_items2': random_items2, 'random_items3': random_items3})
+                                        'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
 def comp_detail(request, id, slug, compcategory_slug=None):
@@ -243,11 +369,24 @@ def comp_detail(request, id, slug, compcategory_slug=None):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     if compcategory_slug:
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
     return render(request, 'comp_detail.html', {'comp': comp, "category": category, 'random_items': random_items,
-                                                'random_items2': random_items2, 'random_items3': random_items3, 'cart_product_form': cart_product_form})
+                                                'random_items2': random_items2, 'random_items3': random_items3,
+                                                'cart_product_form': cart_product_form, 'feedback_form': feedback_form})
 
 
 def category(request, compcategory_slug=None):
@@ -258,12 +397,24 @@ def category(request, compcategory_slug=None):
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
     category_by_product = CompCategory.objects.filter(parent_id__id=None)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     if compcategory_slug:
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
     return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory,
                                              "category_by_product":category_by_product, 'random_items': random_items,
-                                             'random_items2': random_items2, 'random_items3': random_items3})
+                                             'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
 def quote(request):
@@ -274,15 +425,27 @@ def quote(request):
             sender = form.cleaned_data['email']
             phone_number = "Phone Number: {}".format(form.cleaned_data['phone_number'])
             subject = "You have a new Quote from {}:{}:{}".format(name, sender, phone_number)
-            application = "Application: {}".format(form.cleaned_data['application'])
-            product = "Product: {}".format(form.cleaned_data['product'])
-            message = "The quote is for {}: and the use is for {}".format(product, application)
+            application = "\n Application: {}".format(form.cleaned_data['application'])
+            product = "\n Product: {}".format(form.cleaned_data['product'])
+            message = "The quote request is for: {}{}".format(product, application)
             send_mail(subject, message, settings.SERVER_EMAIL, [sender])
 
             return HttpResponseRedirect('received.html')
     else:
         form = QuoteForm()
-    return render(request, 'quote.html', {'form': form})
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'quote.html', {'form': form, 'feedback_form': feedback_form})
 
 
 def received(request):
@@ -290,5 +453,33 @@ def received(request):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
     return render(request, 'received.html', {'random_items': random_items, 'random_items2': random_items2,
-                                             'random_items3': random_items3})
+                                             'random_items3': random_items3, 'feedback_form': feedback_form})
+
+
+def feedback_inquiry(request):
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = "Message: {}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('footer.html')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'footer.html', {'feedback_form': feedback_form})
