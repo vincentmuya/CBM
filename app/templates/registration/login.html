@@ -1,29 +1,59 @@
-{%extends 'base.html'%} {% load static %} {%block content%} {% load bootstrap4 %} {{ block.super}} {% load crispy_forms_tags %}
-
-
-<!--Login-->
-<div class="container py-5">
-  <h1>Login</h1>
-  {% if login_form.errors %}
+{%extends "base.html"%} {% load bootstrap4 %} {% block content %} {%include 'navbar.html'%}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <!-- Empty div -->
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          {% if form.errors %}
             <p> Password or Username is incorrect </p>
           {% endif %}
-  <form method="POST">
-    {% csrf_token %}
-    {{ login_form|crispy }}
-    <button class="btn btn-primary" type="submit">Login</button>
-  </form>
-    <a href="{%url 'password_reset'%}">Forgot password?</a>
-  <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
-</div>
+          <div class="panel panel-default">
 
+            <div class="panel-heading">
+              <h3 class="text-center">Log In</h3>
+            </div>
+            <div class="panel-body">
+
+              <form  action="/accounts/login/" method="post">
+                {% csrf_token %}
+                {% bootstrap_form login_form%}
+
+                <div class="form-group">
+                  <input type="submit" class="btn btn-primary btn-sm" value="Login">
+                </div>
+
+                <input type="hidden" name="next" value="{{next}}">
+
+              </form>
+              <h5><a href="/accounts/register">Open an account?</a></h5>
+            </div>
+
+          </div>
+
+        </div>
+        <!-- empty div -->
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </body>
+</html>
 <style media="screen">
-.container py-5{
-  position:center
+  body{
+    margin-top: 5%;
+    background-image: url('');
+    background-color:black;
+    color:white;
+
   }
-body{
-   margin-top:50px ;
-   background-color:black;
-   color:white;
-   }
-   </style>
+  .panel{
+    margin-top: 12%;
+  }
+</style>
 {% endblock %}

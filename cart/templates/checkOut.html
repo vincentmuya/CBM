@@ -13,6 +13,12 @@
 <section>
 
     <h1>Heading</h1>
+    {% for item in cart %}
+                    {% with computer=item.computer  %}
+    <p>kshs. {{ cart.get_total_price }}</p>
+
+    {% endwith %}
+                {% endfor %}
     <a href="{%url 'cart:buyer-info'%}">Edit/Update</a>
 </section>
 

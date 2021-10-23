@@ -13,7 +13,7 @@ class Cart(object):
         cart = self.session.get(settings.CART_SESSION_ID)
         if not cart:
             #save an empty cart in the session
-            cart = self.session[settings.CART_SESSION_ID]= {}
+            cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
 
     def add(self, computer, quantity=1, update_quantity=False):
