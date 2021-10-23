@@ -13,7 +13,7 @@
         <div  id="sidenav">
     <ul>
         <h5 class="cate" style=" color:white;">Categories</h5>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="">All</a></li>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All</a></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
