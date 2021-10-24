@@ -2,15 +2,18 @@
 
 
 {% block content %}
+{%include 'navbar.html'%}
     <div class="container">
     <h1>Buyer Form</h1>
   <form  action="{%url "cart:buyer-info" %}" method="post" enctype="multipart/form-data">
 
-    {% bootstrap_form form%}
-        {{ form }}
         {%csrf_token%}
-    <input type="submit" class="btn btn-success btn-lg" value="Post">
+        {% bootstrap_form form%}
+        <input type="submit" class="btn btn-success btn-lg" value="Post">
   </form>
+        <br>
+        {%include 'card_carousel.html'%}
+        <br>
     </div>
 <style media="screen">
   body{

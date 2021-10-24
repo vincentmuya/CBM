@@ -4,26 +4,9 @@
 {% block content %}
 {%include 'navbar.html'%}
     <div class="container">
-    <h1>Confirm Order</h1>
-
-    <header>
-  <h2>Shipment Information</h2>
-</header>
-
-<section>
-
-    <h1>Heading</h1>
-    {% for item in cart %}
-                    {% with computer=item.computer  %}
-    <p>kshs. {{ cart.get_total_price }}</p>
-
-    {% endwith %}
-                {% endfor %}
-    <a href="{%url 'cart:buyer-info'%}">Edit/Update</a>
-</section>
-
+    <h1>Confirm Order Details</h1>
 <footer>
-  <p>Footer</p>
+  <p></p>
 </footer>
 
     <header>
@@ -31,18 +14,62 @@
 </header>
 
 <section>
+        {% with totail_items=cart|length %}
+        {% if cart|length > 0 %}
+            My Shopping Order:
+            <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+            </a>
+            {% else %}
+            Your cart is empty.
+        {% endif %}
+    {% endwith %}
+<span class="">
+ <div class="row">
+    {% for item in cart %}
+    {% with computer=item.computer  %}
 
-    <h1>Heading</h1>
-    <p>Hello World.</p>
+    <ul style="list-style: none;">
+                <a href="{{ computer.get_absolute_url }}">
+                    <img src="{% if computer.image %} {{ computer.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
+                </a>
+            <li style="color:white;">{{ computer.name }}</li>
+            <li style="color:white;">Price of 1:kshs.{{ item.price }}/=</li>
+            <li style="color:white;">Totoal of items:kshs.{{ item.total_price }}/=</li>
+        </ul>
+
+    {% endwith %}
+{% endfor %}
+ </div>
+
+    {% with totail_items=cart|length %}
+        {% if cart|length > 0 %}
+            My Shopping Order:
+            <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
+                {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+            </a>
+            {% else %}
+            Your cart is empty.
+        {% endif %}
+    {% endwith %}
+</span>
 </section>
 
 <footer>
-  <p>Footer</p>
+  <p></p>
 </footer>
 
-
-
-    </div>
+        <header>
+  <h2>Shipment Information</h2>
+</header>
+    <a href="{%url 'cart:buyer-info'%}">Edit/Update</a>
+        <footer>
+            <p></p>
+        </footer>
+        <br>
+        {%include 'card_carousel.html'%}
+</div>
+<br>
 <style media="screen">
   body{
     color:white;

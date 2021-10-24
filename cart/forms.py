@@ -9,7 +9,11 @@ class CartAddProductForm(forms.Form):
     update = forms.BooleanField(required=False, initial=False, widget=forms.HiddenInput)
 
 
-class ShippingInformationForm(forms.Form):
+class ShippingInformationForm(forms.ModelForm):
+    buyer_name = forms.CharField(max_length=200)
+    buyer_number = forms.IntegerField()
+    buyer_location = forms.CharField(max_length=200)
+
     class Meta:
         model = BuyerInformation
         fields = ('buyer_name', 'buyer_number', 'buyer_location',)
