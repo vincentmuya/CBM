@@ -13,7 +13,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-dark navbar-fixed-top">
   <a class="navbar-brand" href="{%url 'index'%}">
     <img class="logo" src="/static/images/cbm.png" alt="">
-      <i class="fas fa-home"></i>
+      <i style="color:white;" id="home" class="fas fa-home"></i>
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -39,7 +39,7 @@
       </li>
 <!--        Security Surveillance-->
         <li class="nav-item active">
-        <a style="color:white;"  class="nav-link" href="{%url 'security_surveillance'%}">Security and Surveillance <span class="sr-only">(current)</span></a>
+        <a style="color:white;"  class="nav-link" href="{%url 'security_surveillance'%}">Security & Surveillance <span class="sr-only">(current)</span></a>
       </li>
 <!--        Software-->
         <li class="nav-item active">
@@ -59,16 +59,23 @@
         </div>
         </div>
     </form>
-    {% if user.is_authenticated %}
+<!--      Authentication-->
+    {% if user.is_authenticated.is_superuser  %}
         <a class="nav-link" href="/logout">Logout</a>
+      <a>Hi Superuser</a>
         <a class="nav-link" href="#">Welcome, {{user.username}}</a>
         <a href="{%url 'cart:cart_detail'%}"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+      {% elif user.is_authenticated %}
+      <a style="color:white;" href="{%url 'cart:cart_detail'%}"><span class="fas fa-shopping-cart"></span> Cart</a>
+        <a style="color:white;" class="nav-link" href="#">logged In {{user.username}}</a>
+      <a style="color:white;" class="nav-link" href="/logout">Logout</a>
+
       {% else %}
       <li class="nav-item">
-        <a class="nav-link" href="/login">Login</a>
+        <a style="color:white;" class="nav-link" href="/login">Hello Guest Login</a>
       </li>
 
-      {% endif %}
+        {% endif %}
   </div>
 </nav>
 <style media="screen">
@@ -91,4 +98,8 @@ bg-dark {
   /*Without this, clicking will make it sticky*/
     pointer-events: none;
 }
+#home{
+    color: white;
+    padding-left: 15px;
+    }
 </style>

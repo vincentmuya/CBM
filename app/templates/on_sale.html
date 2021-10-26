@@ -16,7 +16,7 @@
 
     <ul class="listing">
   <li class="product">
-    <a class="img-wrapper" href="{{ computer.get_absolute_url }}">
+    <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
       <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
     </a>
 

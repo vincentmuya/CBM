@@ -140,7 +140,19 @@ def register_request(request):
             return redirect("/")
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
-    return render(request, "registration/register.html", {"register_form": form})
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, "registration/register.html", {"register_form": form, 'feedback_form': feedback_form})
 
 
 def login_request(request):
@@ -159,7 +171,19 @@ def login_request(request):
         else:
             messages.error(request, "Invalid username or password.")
     form = AuthenticationForm()
-    return render(request, "registration/login.html", {"login_form": form})
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, "registration/login.html", {"login_form": form, 'feedback_form': feedback_form})
 
 
 def logout_request(request):
@@ -265,7 +289,8 @@ def dell(request):
     else:
         feedback_form = FeedbackInquiryForm()
     return render(request, 'dell.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                         'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form':feedback_form})
+                                         'random_items2': random_items2, 'random_items3': random_items3,
+                                         'feedback_form': feedback_form})
 
 
 def hp(request):
@@ -357,7 +382,8 @@ def apc(request):
     else:
         feedback_form = FeedbackInquiryForm()
     return render(request, 'apc.html', {"comp": comp, "category": category, 'random_items': random_items,
-                                        'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form': feedback_form})
+                                        'random_items2': random_items2, 'random_items3': random_items3,
+                                        'feedback_form': feedback_form})
 
 
 def comp_detail(request, id, slug, compcategory_slug=None):
@@ -412,8 +438,9 @@ def category(request, compcategory_slug=None):
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
     return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory,
-                                             "category_by_product":category_by_product, 'random_items': random_items,
-                                             'random_items2': random_items2, 'random_items3': random_items3, 'feedback_form': feedback_form})
+                                             "category_by_product": category_by_product, 'random_items': random_items,
+                                             'random_items2': random_items2, 'random_items3': random_items3,
+                                             'feedback_form': feedback_form})
 
 
 def quote(request):
@@ -482,3 +509,5 @@ def feedback_inquiry(request):
     else:
         feedback_form = FeedbackInquiryForm()
     return render(request, 'footer.html', {'feedback_form': feedback_form})
+
+
