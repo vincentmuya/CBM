@@ -38,7 +38,7 @@
                 {% for item in cart %}
                     {% with computer=item.computer  %}
                         <tr>
-                            <td>
+                            <td style="background-color:white;">
                                 <a href="{{ computer.get_absolute_url }}">
                                     <img src="{% if computer.image %} {{ computer.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
                                 </a>

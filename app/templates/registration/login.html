@@ -17,22 +17,16 @@
           <div class="panel panel-default">
 
             <div class="panel-heading">
-              <h3 class="text-center">Log In</h3>
+              <h3 class="text-center">Sign Up</h3>
             </div>
             <div class="panel-body">
 
-              <form  action="/accounts/login/" method="post">
-                {% csrf_token %}
-                {% bootstrap_form login_form%}
-
-                <div class="form-group">
-                  <input type="submit" class="btn btn-primary btn-sm" value="Login">
-                </div>
-
-                <input type="hidden" name="next" value="{{next}}">
-
-              </form>
-              <h5><a href="/accounts/register">Open an account?</a></h5>
+            <form method="post">
+              {% csrf_token %}
+              {% bootstrap_form form %}
+              <button type="submit" class="btn btn-primary">Sign up</button>
+            </form>
+                <p class="text-center">Don't have an account? <a href="/register">Create an account</a>.</p>
             </div>
 
           </div>

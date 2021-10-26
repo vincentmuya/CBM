@@ -4,7 +4,6 @@ from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm, NewProductForm
 from django.contrib.auth import login, authenticate, logout
-from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from cart.forms import CartAddProductForm
 from requests.auth import HTTPBasicAuth
@@ -22,6 +21,8 @@ from django.utils.encoding import force_bytes
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 # Create your views here.
 
 
@@ -137,10 +138,11 @@ def register_request(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("/")
+            messages.success(request, "Registration successful." )
+            return redirect("/login")
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
+
     if request.method == 'POST':
         feedback_form = FeedbackInquiryForm(request.POST)
         if feedback_form.is_valid():
@@ -153,7 +155,7 @@ def register_request(request):
             return HttpResponseRedirect('/')
     else:
         feedback_form = FeedbackInquiryForm()
-    return render(request, "registration/register.html", {"register_form": form, 'feedback_form': feedback_form})
+    return render(request, 'registration/register.html', {'form': form, 'feedback_form': feedback_form})
 
 
 def login_request(request):
@@ -168,10 +170,11 @@ def login_request(request):
                 messages.info(request, f"You are now logged in as {username}.")
                 return redirect("/")
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request,"Invalid username or password.")
         else:
-            messages.error(request, "Invalid username or password.")
+            messages.error(request,"Invalid username or password.")
     form = AuthenticationForm()
+
     if request.method == 'POST':
         feedback_form = FeedbackInquiryForm(request.POST)
         if feedback_form.is_valid():
@@ -184,13 +187,7 @@ def login_request(request):
             return HttpResponseRedirect('/')
     else:
         feedback_form = FeedbackInquiryForm()
-    return render(request, "registration/login.html", {"login_form": form, 'feedback_form': feedback_form})
-
-
-def logout_request(request):
-    logout(request)
-    messages.info(request, "You have successfully logged out.")
-    return redirect("/")
+    return render(request, 'registration/login.html', {'form': form, 'feedback_form': feedback_form})
 
 
 def password_reset_request(request):
@@ -220,6 +217,12 @@ def password_reset_request(request):
                     return redirect("registration/password_reset_done.html")
     password_reset_form = PasswordResetForm()
     return render(request=request, template_name="registration/password_reset.html", context={"password_reset_form": password_reset_form})
+
+
+def logout_request(request):
+    logout(request)
+    messages.info(request, "You have successfully logged out.")
+    return redirect("/")
 
 
 def digital_press(request):
