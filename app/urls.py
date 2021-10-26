@@ -24,6 +24,7 @@ urlpatterns = [
     url("apc", views.apc, name="apc"),
     url("quote", views.quote, name="quote"),
     url("received", views.received, name="received"),
+    url("new/product", views.new_product, name="new_product"),
 
 ]
 

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
-from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm
+from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm, NewProductForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -21,6 +21,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.core.mail import send_mail, BadHeaderError
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -511,3 +512,26 @@ def feedback_inquiry(request):
     return render(request, 'footer.html', {'feedback_form': feedback_form})
 
 
+@login_required(login_url='/accounts/login')
+def new_product(request):
+    if request.method == 'POST':
+        form = NewProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.save()
+            return HttpResponseRedirect('/')
+    else:
+        form = NewProductForm()
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = "Message: {}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('footer.html')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'new_product.html', {"form": form, 'feedback_form': feedback_form})

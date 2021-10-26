@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from .models import Computer
 
 # Create your forms here.
 APPLICATION_USE = [
@@ -49,3 +49,11 @@ class FeedbackInquiryForm(forms.Form):
     email = forms.EmailField(required=True)
     message_content = forms.CharField(widget=forms.Textarea)
 
+
+class NewProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Computer
+        exclude = ["slug"]
+        widgets = {
+        }
