@@ -8,7 +8,7 @@ urlpatterns = [
     url("register", views.register_request, name="register"),
     url("login", views.login_request, name="login"),
     url("logout", views.logout_request, name="logout"),
-
+    # url("register", views.register, name="register"),
     url(r'^sale$', views.on_sale, name='on_sale'),
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.comp_detail, name='comp_detail'),
     url(r'^(?P<compcategory_slug>[-\w]+)/$', views.category, name='computer_list_by_compcategory'),

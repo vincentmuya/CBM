@@ -170,7 +170,7 @@ def login_request(request):
                 messages.info(request, f"You are now logged in as {username}.")
                 return redirect("/")
             else:
-                messages.error(request,"Invalid username or password.")
+                messages.error(request, "Invalid username or password.")
         else:
             messages.error(request,"Invalid username or password.")
     form = AuthenticationForm()

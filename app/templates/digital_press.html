@@ -30,8 +30,8 @@
         {%for comp in comp %}
         <ul class="listing">
   <li class="product">
-    <a class="img-wrapper" href="{{ comp.get_absolute_url }}">
-      <img style="background-color:white;" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    <a style="background-color:white;" class="img-wrapper" href="{{ comp.get_absolute_url }}">
+      <img src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
     </a>
 
     <div class="info">
