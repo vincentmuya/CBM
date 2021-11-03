@@ -33,3 +33,10 @@
       <a href="#" class="add-btn cart">Cart</a>
     </div>
   </li>
+
+.product {
+    width: 100px;
+    height: 80px;
+    position: relative;
+}
+

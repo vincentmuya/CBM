@@ -57,3 +57,11 @@ class NewProductForm(forms.ModelForm):
         exclude = ["slug"]
         widgets = {
         }
+
+
+class RequestProductInfoForm(forms.Form):
+    name = forms.CharField(max_length=50)
+    email = forms.EmailField(required=True)
+    phone_number = forms.IntegerField()
+    product = forms.CharField()
+    information_request = forms.CharField(widget=forms.Textarea)

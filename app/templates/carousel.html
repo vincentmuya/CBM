@@ -9,13 +9,13 @@
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a href="{%url 'security_surveillance'%}"><img class="d-block w-100" src="https://www.securityinformed.com/img/links/1240/1240535-security-informed.jpg" alt="First slide"></a>
+      <a href="{%url 'security_surveillance'%}"><img id="carouselimg" class="d-block w-100" src="https://www.securityinformed.com/img/links/1240/1240535-security-informed.jpg" alt="First slide"></a>
       <div class="carousel-caption d-none d-md-block">
   </div>
     </div>
 
     <div class="carousel-item">
-      <a href="{%url 'digital_press'%}"><img class="d-block w-100" src="https://mms.businesswire.com/media/20201118006025/en/840076/5/Xerox_Iridesse_Pink.jpg" alt="Second slide"></a>
+      <a href="{%url 'digital_press'%}"><img id="carouselimg" class="d-block w-100" src="https://mms.businesswire.com/media/20201118006025/en/840076/5/Xerox_Iridesse_Pink.jpg" alt="Second slide"></a>
       <div class="carousel-caption d-none d-md-block">
     <h3 style="color:;"><strong><bold>Digital Printing Solutions for Production Print.</bold></strong></h3>
     <h4 style="color:;">Dreams In. Prints Out. Production Innovation </h4>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="carousel-item">
-      <a href="{%url 'apc'%}"><img class="d-block w-100" src="https://www.apc.com/ke/en/assets/698/media/19669/1200/BE850M2_LS3-980x490.jpg" alt="Second slide"></a>
+      <a href="{%url 'apc'%}"><img id="carouselimg" class="d-block w-100" src="https://www.apc.com/ke/en/assets/698/media/19669/1200/BE850M2_LS3-980x490.jpg" alt="Second slide"></a>
       <div class="carousel-caption d-none d-md-block">
     <h3 style="color:;"><strong><bold>Delivers When Every Minute Counts</bold></strong></h3>
     <h4 style="color:;">Powerful backup for home networks,<br> theater and gaming </h4>
@@ -31,7 +31,7 @@
     </div>
 
         <div class="carousel-item">
-      <a href="{%url 'lenovo'%}"><img class="d-block w-100" src="https://img.wallpapersafari.com/desktop/800/450/51/85/uaB4Np.jpg" alt="Second slide"></a>
+      <a href="{%url 'lenovo'%}"><img id="carouselimg" class="d-block w-100" src="https://img.wallpapersafari.com/desktop/800/450/51/85/uaB4Np.jpg" alt="Second slide"></a>
       <div class="carousel-caption d-none d-md-block">
     <h3 style="color:;"><strong><bold>Lenovo: For those who do</bold></strong></h3>
     <h4 style="color:;">Changing tomorrow, today! </h4>
@@ -39,7 +39,7 @@
     </div>
 
             <div class="carousel-item">
-        <a href="{%url 'software'%}"><img class="d-block w-100" src="https://resellermalaysia.my/wp-content/uploads/2017/08/MS-Kaspersky-e1502430630257.png" alt="Third slide"></a>
+        <a href="{%url 'software'%}"><img id="carouselimg" class="d-block w-100" src="https://resellermalaysia.my/wp-content/uploads/2017/08/MS-Kaspersky-e1502430630257.png" alt="Third slide"></a>
       <div class="carousel-caption d-none d-md-block">
     <h3 style="color:red;"></h3>
     <h4 style="color:red;"> </h4>
@@ -79,5 +79,22 @@
 width:70px;
 height:70px;
 background-color:red;
+}
+@media screen and (max-width:650px){
+#carouselimg{
+width:100%;
+height:250px;
+}
+.carousel-control-next-icon, .carousel-control-prev-icon{
+width:30px;
+height:30px;
+background-color:red;
+}
+#button {
+    width: 70px;
+    margin: 5px;
+    font-size: 10px;
+}
+
 }
   </style>

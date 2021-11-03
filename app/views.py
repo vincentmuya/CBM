@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Computer, CompCategory
 from django.http import JsonResponse, HttpResponseRedirect
-from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm, NewProductForm
+from .forms import NewUserForm, QuoteForm, FeedbackInquiryForm, NewProductForm, RequestProductInfoForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from cart.forms import CartAddProductForm
@@ -398,6 +398,7 @@ def comp_detail(request, id, slug, compcategory_slug=None):
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
     random_items3 = random.sample(items, 4)
+
     if request.method == 'POST':
         feedback_form = FeedbackInquiryForm(request.POST)
         if feedback_form.is_valid():
@@ -538,3 +539,37 @@ def new_product(request):
     else:
         feedback_form = FeedbackInquiryForm()
     return render(request, 'new_product.html', {"form": form, 'feedback_form': feedback_form})
+
+
+def request_info(request):
+    if request.method == 'POST':
+        info_form = RequestProductInfoForm(request.POST)
+        if info_form.is_valid():
+            name = info_form.cleaned_data['name']
+            sender = info_form.cleaned_data['email']
+            phone_number = "Phone Number: {}".format(info_form.cleaned_data['phone_number'])
+            subject = "You have an Information Request from {}:{}:{}".format(name, sender, phone_number)
+            product = info_form.cleaned_data['product']
+            information_request = ":\n{}".format(info_form.cleaned_data['information_request'])
+            request_content = "Product Information Request is for {}: and information request is {}".format(product, information_request)
+            message = "{}".format(request_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('received.html')
+    else:
+        info_form = RequestProductInfoForm()
+
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = "Message: {}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('footer.html')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'request_info.html', {'info_form': info_form, "feedback_form": feedback_form})
+

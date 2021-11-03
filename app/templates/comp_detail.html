@@ -46,6 +46,11 @@
        </form>
             </div>
                {% endif %}
+
+            <div class="button">
+         <a href="{%url 'request_info'%}"><button type="button" class="btn btn-secondary"><input type="submit" value="Request Info"></button></a>
+            </div>
+
           </div>
 		</div>
 		<img style="max-width:100%;cursor:pointer" class="compimg" onclick="onClick(this)" class="modal-hover-opacity" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
@@ -166,17 +171,15 @@ p {
 }
 
 .button a {
-	display: inline-block;
-	overflow: hidden;
-	position: relative;
-	font-size: 13px;
-	color: #111;
-	text-decoration: none;
-	padding: 10px 15px;
-	border: 1px solid #aaa;
-	font-weight: bold;
-
-
+<!--	display: inline-block;-->
+<!--	overflow: hidden;-->
+<!--	position: relative;-->
+<!--	font-size: 13px;-->
+<!--	color: #111;-->
+<!--	text-decoration: none;-->
+<!--	padding: 10px 15px;-->
+<!--	border: 1px solid #aaa;-->
+<!--	font-weight: bold;-->
 }
 
 .button a:after{
