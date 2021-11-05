@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="HandheldFriendly" content="true">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" />
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
@@ -30,7 +31,7 @@
 			<h1>{{ comp.title }}</h1>
             <p><strong>Description</strong></p>
 			<p style="color:black;">{{ comp.description }}</p>
-            <p style="color:black;"><strong>Category: </strong>{{ comp.compcategory }}</p>
+            <p style="color:black;"><strong>Category: </strong><a href="">{{ comp.compcategory }}</a></p>
             <div class="row">
                 {% if comp.price == None %}
                 <button type="button" class="btn btn-danger"><a style="color:black;" href="{%url 'quote'%}">Request Quote</a></button>
@@ -39,7 +40,7 @@
 				<a href="#">KSH{{ comp.price }}</a>
 			</div>
                 <div class="button">
-                <form action="{% url "cart:cart_add" comp.id %}" method="post" enctype="multipart/form-data">
+        <form action="{% url "cart:cart_add" comp.id %}" method="post" enctype="multipart/form-data">
          {{ cart_product_form }}
          {% csrf_token %}
          <button type="button" class="btn btn-danger"><input type="submit" value="Add to cart"></button>
@@ -48,12 +49,13 @@
                {% endif %}
 
             <div class="button">
-         <a href="{%url 'request_info'%}"><button type="button" class="btn btn-secondary"><input type="submit" value="Request Info"></button></a>
+         <a href="{%url 'request_info'%}"><button type="button" class="btn btn-info"><input type="submit" value="Request Info"></button></a>
             </div>
 
           </div>
 		</div>
-		<img style="max-width:100%;cursor:pointer" class="compimg" onclick="onClick(this)" class="modal-hover-opacity" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
+        <button onclick="onClick(this)" class="btn btn-warning" id="compimg"><i class="fas fa-search-plus" style="left: 350px;"></i>Click Image To Zoom</button>
+        <img style="max-width:100%;cursor:pointer" class="compimg" onclick="onClick(this)" class="modal-hover-opacity" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "imgages/no_image.png" %}{% endif %}" width="300px" class="animated fadeInRight">
 	</div>
 </div>
 
@@ -132,7 +134,15 @@ padding-left:100px;
 	z-index: 0;
 	animation-delay: 0.5s;
 }
+#compimg{
+	position: absolute;
+	 margin-top:100px ;
+	top: -75px;
+	right: 10px;
+	z-index: 0;
+	animation-delay: 0.5s;
 
+}
 .content {
 	animation-delay: 0.3s;
 	position: absolute;
@@ -293,7 +303,7 @@ display:inline-block;
   <!-- Javascript for each modal containing a different pic. This code was written so that you don't have to write multiple modal divs -->
    <script>
    function onClick(element) {
-  document.getElementById("img01").src = element.src;
+  document.getElementById("img01" ).src = element.src;
   document.getElementById("modal01").style.display = "block";
 }
    </script>
