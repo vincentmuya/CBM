@@ -18,9 +18,9 @@
         <div  id="sidenav">
     <ul>
         <h4 class="cate" style=" color:white;">Categories</h4>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All</a></li>
+      <li {% if not compcategory %} class="selected" {% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
       {% for cat in category %}
-      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a style="color:white;" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      <li {% if compcategory.slug == cat.slug %}  class="selected" {% endif %}><a style="color:white;" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -31,14 +31,15 @@
 			<h1>{{ comp.title }}</h1>
             <p><strong>Description</strong></p>
 			<p style="color:black;">{{ comp.description }}</p>
-            <p style="color:black;"><strong>Category: </strong><a href="">{{ comp.compcategory }}</a></p>
+            <p style="color:black;"><strong>Category: </strong><a href="{{ comp.compcategory.get_absolute_url }}">{{ comp.compcategory }}</a></p>
+
             <div class="row">
                 {% if comp.price == None %}
                 <button type="button" class="btn btn-danger"><a style="color:black;" href="{%url 'quote'%}">Request Quote</a></button>
                 {% else %}
-			<div class="button">
-				<a href="#">KSH{{ comp.price }}</a>
-			</div>
+
+				<h5 id="price">KSH: {{ comp.price }}</h5>
+
                 <div class="button">
         <form action="{% url "cart:cart_add" comp.id %}" method="post" enctype="multipart/form-data">
          {{ cart_product_form }}
@@ -71,7 +72,7 @@
 </html>
 <style media="screen">
 body{
-  margin-top:70px ;
+  margin-top:60px ;
   background-color:black;
 }
 
@@ -137,7 +138,7 @@ padding-left:100px;
 #compimg{
 	position: absolute;
 	 margin-top:100px ;
-	top: -75px;
+	top: -50px;
 	right: 10px;
 	z-index: 0;
 	animation-delay: 0.5s;
@@ -180,6 +181,14 @@ p {
 
 }
 
+#price{
+  background: #e32d2c;
+  color:white;
+  font-size: 20px;
+  margin-top:15px;
+  right: 10px;
+  border-radius:5px;
+}
 .button a {
 <!--	display: inline-block;-->
 <!--	overflow: hidden;-->

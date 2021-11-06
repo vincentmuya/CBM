@@ -13,7 +13,6 @@ urlpatterns = [
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', views.comp_detail, name='comp_detail'),
     url(r'^(?P<compcategory_slug>[-\w]+)/$', views.category, name='computer_list_by_compcategory'),
     url(r'^search$', views.search_results, name='search_results'),
-
     url('access/token', views.getAccessToken, name='get_mpesa_access_token'),
     url('online/lipa', views.lipa_na_mpesa_online, name='lipa_na_mpesa'),
     url("password_reset", views.password_reset_request, name="password_reset"),
