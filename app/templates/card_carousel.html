@@ -3,7 +3,7 @@
 <div class="container">
 <div class="row">
     <div class="col-6">
-        <p class="mb-3" ><a style="color:white;" href="{%url 'on_sale'%}">Browse All Products</a></p>
+<!--        <p class="mb-3" ><a style="color:white;" href="{%url 'on_sale'%}">Browse All Products</a></p>-->
     </div>
     <div class="col-6 text-right">
         <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
@@ -31,7 +31,7 @@
                         {% if computer.price == None %}
                     <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
                         {% else %}
-                                  <div class="price">KSH:{{ computer.price }}</div>
+                                  <div class="price">KSH:{{ computer.price }}/=</div>
                         {% endif %}
                                 </div>
 
@@ -55,7 +55,7 @@
                     {% if computer.price == None %}
                     <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
                         {% else %}
-                  <div class="price">KSH:{{ computer.price }}</div>
+                  <div class="price">KSH:{{ computer.price }}/=</div>
                     {% endif %}
                 </div>
 
@@ -81,7 +81,7 @@
                     {% if computer.price == None %}
                     <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
                         {% else %}
-                  <div class="price">KSH:{{ computer.price }}</div>
+                  <div class="price">KSH:{{ computer.price }}/=</div>
                     {% endif %}
                 </div>
 

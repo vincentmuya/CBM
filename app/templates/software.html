@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title></title>
   </head>
   <body>
@@ -14,7 +15,7 @@
 <div  id="sidenav">
     <ul>
         <h4 class="cate" style=" color:white;">Categories</h4>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="">All</a></li>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name}}</a></li>
       {% endfor %}
@@ -37,7 +38,7 @@
 
     <div class="info">
       <div class="title">{{ comp.title }}</div>
-      <div class="price">KSH{{ comp.price}}</div>
+      <div class="price">KSH{{ comp.price}}/=</div>
 
     </div>
     <div class="actions-wrapper">
@@ -59,6 +60,9 @@ body{
 
   background-color:black;
   padding-top:;
+}
+h1,h2,h5,p,a,li {
+font-family: 'Lato', sans-serif;
 }
 #container{
 padding-left:100px;
@@ -106,6 +110,7 @@ padding-left:0px;
     padding-top:100px ;
     text-align: center;
     color:black;
+    text-shadow: 3px 3px 3px  white;
   }
       .overlay2{
   	background: rgba(0, 0, 0, 0.3) url('https://www.pcworld.com/wp-content/uploads/2021/09/cso_antivirus_virus_alert_warning_security_by_thinkstock_465706449_2400x1600-100812399-orig.jpg?quality=50&strip=all&w=1024') 60% / cover fixed;

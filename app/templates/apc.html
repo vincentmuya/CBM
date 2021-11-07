@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title></title>
   </head>
   <body>
@@ -26,7 +27,7 @@
 
     <div class="info">
       <div class="title">{{ comp.title }}</div>
-      <div class="price">KSH:{{ comp.price }}</div>
+      <div class="price">KSH:{{ comp.price }}/=</div>
 
     </div>
 
@@ -49,6 +50,9 @@ body{
   background-color:black;
   padding-top:;
 }
+h1,h2,h5,p,a,li {
+font-family: 'Lato', sans-serif;
+}
   .overlay{
   	background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
       -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
@@ -61,6 +65,7 @@ body{
     padding-top:100px ;
     text-align: center;
     color:white;
+    text-shadow: 3px 3px 3px  black;
   }
       .overlay2{
   	background: rgba(0, 0, 0, 0.3) url('https://www.apc.com/ke/en/assets/698/media/19669/1200/BE850M2_LS3-980x490.jpg') 60% / cover fixed;

@@ -61,7 +61,7 @@
     </form>
 <!--      Authentication-->
     {% if user.is_authenticated and user.is_superuser %}
-<!--        <a style="color:white;" href="{%url 'cart:cart_detail'%}"><span class="fas fa-shopping-cart"></span> Cart</a>-->
+        <a style="color:white;" href="{%url 'cart:cart_detail'%}"><span class="fas fa-shopping-cart"></span> Cart</a>
         <a style="color:white;" href="{%url 'new_product' %}"><span class="glyphicon glyphicon-plus"></span> Add a product</a>
         <a style="color:white;" class="nav-link" href="#">logged In {{user.username}}</a>
         <a style="color:white;" class="nav-link" href="/logout">Logout</a>
@@ -85,7 +85,7 @@
 li,a {
     padding:5px;
     list-style:none;
-    font-size:15px;
+    font-size:13.5px;
 }
 .logo {
     height: 40px;

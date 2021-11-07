@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="HandheldFriendly" content="true">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -38,7 +38,7 @@
                 <button type="button" class="btn btn-danger"><a style="color:black;" href="{%url 'quote'%}">Request Quote</a></button>
                 {% else %}
 
-				<h5 id="price">KSH: {{ comp.price }}</h5>
+				<h5 id="price">KSH: {{ comp.price }}/=</h5>
 
                 <div class="button">
         <form action="{% url "cart:cart_add" comp.id %}" method="post" enctype="multipart/form-data">
@@ -75,7 +75,9 @@ body{
   margin-top:60px ;
   background-color:black;
 }
-
+h1,h4,a,h5,p,li{
+font-family: 'Lato', sans-serif;
+}
 #container{
 padding-left:100px;
 }
@@ -187,7 +189,7 @@ p {
   font-size: 20px;
   margin-top:15px;
   right: 10px;
-  border-radius:5px;
+  border-radius:3px;
 }
 .button a {
 <!--	display: inline-block;-->

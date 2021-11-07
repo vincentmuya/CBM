@@ -11,9 +11,13 @@
 <body>
 <br>
 <div class="container">
-<div class="row" id="row">
-          {%for computer in computers %}
 
+    <a href=""> Laptops</a>
+    <a href="">Desktops</a>
+    <a href="">Monitors</a>
+<div class="row" id="row">
+
+      {%for computer in computers %}
     <ul class="listing">
   <li class="product">
     <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
@@ -25,7 +29,7 @@
                     {% if computer.price == None %}
                     <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
                         {% else %}
-                  <div class="price">KSH:{{ computer.price }}</div>
+                  <div class="price">KSH:{{ computer.price }}/=</div>
                     {% endif %}
                 </div>
 

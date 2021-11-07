@@ -9,7 +9,7 @@
         <div  id="sidenav">
     <ul>
         <h4 class="cate" style=" color:white;">Categories</h4>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All</a></li>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
@@ -28,7 +28,7 @@
                     {% if comp.price == None %}
                     <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
                         {% else %}
-                  <div class="price">KSH:{{ comp.price }}</div>
+                  <div class="price">KSH:{{ comp.price }}/=</div>
                     {% endif %}
                 </div>
 

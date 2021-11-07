@@ -79,7 +79,7 @@ def index(request):
 
 
 def on_sale(request):
-    computers = Computer.objects.all()
+    computers = Computer.objects.order_by("?")
     items = list(Computer.objects.all())
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)

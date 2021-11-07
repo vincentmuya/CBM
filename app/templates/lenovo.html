@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <title></title>
   </head>
   <body>
@@ -13,7 +14,7 @@
         <div  id="sidenav">
     <ul>
         <h5 class="cate" style=" color:white;">Categories</h5>
-      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All</a></li>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
@@ -36,7 +37,7 @@
 
     <div class="info">
       <div class="title">{{ comp.title }}</div>
-      <div class="price">KSH:{{ comp.price}}</div>
+      <div class="price">KSH:{{ comp.price}}/=</div>
 
     </div>
     <div class="actions-wrapper">
@@ -56,6 +57,9 @@
 body{
 
   background-color:black;
+}
+h2,h5,p,a,li {
+font-family: 'Lato', sans-serif;
 }
 #container{
 padding-left:100px;
