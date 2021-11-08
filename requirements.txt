@@ -16,7 +16,9 @@ django-js-asset==1.2.2
 django-model-utils==4.1.1
 django-mptt==0.13.4
 django-registration==3.2
+django-seo==0.3.5
 django-tinymce==3.3.0
+DjangoSEO==1.0
 gunicorn==20.1.0
 idna==3.2
 oauthlib==3.1.1
