@@ -40,21 +40,21 @@
                         <tr>
                             <td style="background-color:white;">
                                 <a href="{{ computer.get_absolute_url }}">
-                                    <img src="{% if computer.image %} {{ computer.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="..." style="height: 130px; width: auto">
+                                    <img class="cartimg" src="{% if computer.image %} {{ computer.image.url }} {% else %} {% static 'img/default.jpg' %} {% endif %}" alt="...">
                                 </a>
                             </td>
-                            <td style="color:white;">{{ computer.name }}</td>
+                            <td style="color:white;">{{ computer.title }}</td>
                             <td>
                                 <form action="{% url "cart:cart_add" computer.id %}" method="post">
                                     {% csrf_token %}
                                     {{ item.update_quantity_form.quantity }}
                                     {{ item.update_quantity_form.update }}
-                                    <input type="submit" value="Update" class="btn btn-info">
+                                    <button type="button" id="cartbtn" class="btn btn-info"><input type="submit" value="Update" ></button>
                                 </form>
                             </td>
                             <td>
-                              <a href=""><button type="button" class="btn btn-success" name="button">Order</button></a>
-                                <a href="{% url "cart:cart_remove" computer.id %}"><button type="button" class="btn btn-warning" name="button">Remove</button></a>
+                              <a href=""><button type="button" id="cartbtn" class="btn btn-success" name="button"><input type="submit" value="Order" ></button></a>
+                                <a href="{% url "cart:cart_remove" computer.id %}"><button id="cartbtn" type="button" class="btn btn-danger" name="button"><input type="submit" value="Remove" ></button></a>
                             </td>
                             <td style="color:white;">kshs. {{ item.price }}/=</td>
                             <td style="color:white;">kshs. {{ item.total_price }}/=</td>
@@ -83,11 +83,45 @@
 .container{
   padding-top:50px;
 }
+.cartimg{
+width:auto;
+height: 130px;
+}
 @media screen and (max-width:650px){
   h2{
     font-size: 15px;
   }
-
+.table th, td {
+font-size: 8px;
+vertical-align: bottom;
+border-bottom: 2px
+ solid #dee2e6;
+ padding:0px;
+}
+.table td{
+padding:0px;
+}
+.cartimg{
+width:90px;
+height:80px;
+}
+form{
+font-size:8px;
+}
+button, input {
+    overflow: visible;
+    font-size: 8px;
+}
+#cartbtn{
+padding:1px;
+margin:0px
+}
+a{
+font-size:10px;
+}
+.btn{
+font-size:10px;
+}
 }
 </style>
 {% endblock %}
