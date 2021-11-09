@@ -5,95 +5,95 @@
     <div class="col-6">
 <!--        <p class="mb-3" ><a style="color:white;" href="{%url 'on_sale'%}">Browse All Products</a></p>-->
     </div>
-    <div class="col-6 text-right">
-        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    </div>
+<div class="col-6 text-right">
+    <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <i class="fa fa-arrow-left"></i>
+    </a>
+    <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <i class="fa fa-arrow-right"></i>
+    </a>
+</div>
     <div class="col-12">
-        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="row">
-                {%for computer in random_items %}
-                    <ul class="listing">
-              <li class="product">
-                <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
-                  <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
-                </a>
+    <div class="carousel-item active">
+        <div class="row">
+            {%for computer in random_items %}
+                <ul class="listing">
+      <li class="product">
+        <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
+          <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+        </a>
 
-                <div class="info">
-                  <div class="title">{{ computer.title }}</div>
-                        {% if computer.price == None %}
-                    <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
-                        {% else %}
-                                  <div class="price">KSH:{{ computer.price }}/=</div>
-                        {% endif %}
-                                </div>
+        <div class="info">
+          <div class="title">{{ computer.title }}</div>
+                {% if computer.price == None %}
+            <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
+                {% else %}
+                          <div class="price">KSH:{{ computer.price }}/=</div>
+                {% endif %}
+                        </div>
 
-                              </li>
-                                        </ul>
-                            {%endfor%}
-                    </div>
-                </div>
+                      </li>
+                            </ul>
+                {%endfor%}
+        </div>
+    </div>
 
 <div class="carousel-item">
-    <div class="row">
-                {%for computer in random_items2 %}
-                    <ul class="listing">
-              <li class="product">
-                <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
-                  <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
-                </a>
+<div class="row">
+    {%for computer in random_items2 %}
+        <ul class="listing">
+  <li class="product">
+    <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
+      <img src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    </a>
 
-                <div class="info">
-                  <div class="title">{{ computer.title }}</div>
-                    {% if computer.price == None %}
-                    <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
-                        {% else %}
-                  <div class="price">KSH:{{ computer.price }}/=</div>
-                    {% endif %}
-                </div>
-
-              </li>
-                        </ul>
-            {%endfor%}
+    <div class="info">
+      <div class="title">{{ computer.title }}</div>
+        {% if computer.price == None %}
+        <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
+            {% else %}
+      <div class="price">KSH:{{ computer.price }}/=</div>
+        {% endif %}
     </div>
+
+  </li>
+            </ul>
+{%endfor%}
+</div>
 </div>
 
 
-                <div class="carousel-item">
-                    <div class="row">
+    <div class="carousel-item">
+        <div class="row">
 {%for computer in random_items3 %}
 <ul class="listing">
-        <li class="product">
-        <a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
-        <img  src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
-        </a>
+<li class="product">
+<a style="background-color:white;" class="img-wrapper" href="{{ computer.get_absolute_url }}">
+<img  src="{% if computer.image %}{{ computer.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+</a>
 
- <div class="info">
-                  <div class="title">{{ computer.title }}</div>
-                    {% if computer.price == None %}
-                    <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
-                        {% else %}
-                  <div class="price">KSH:{{ computer.price }}/=</div>
-                    {% endif %}
-                </div>
+<div class="info">
+      <div class="title">{{ computer.title }}</div>
+        {% if computer.price == None %}
+        <div class="price"><a style="color:white;" href="{%url 'quote'%}">Request Quote</a></div>
+            {% else %}
+      <div class="price">KSH:{{ computer.price }}/=</div>
+        {% endif %}
+    </div>
 
 </li>
-    </ul>
+</ul>
 {%endfor%}
 
-                    </div>
-                </div>
-
-            </div>
         </div>
+        </div>
+
     </div>
+</div>
+</div>
 </div>
 </div>
 </section>

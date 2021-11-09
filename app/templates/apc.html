@@ -35,11 +35,6 @@
     {%endfor%}
    </ul>
 </div>
-
-
-<!--        <section class="overlay2">-->
-<!--      <h1 class="Digital2" id="Digital2">Powerful backup for home networks,<br> theater and gaming </h1>-->
-<!--    </section>-->
     {%include 'card_carousel.html'%}
 
   </body>
@@ -53,33 +48,21 @@ body{
 h1,h2,h5,p,a,li {
 font-family: 'Lato', sans-serif;
 }
-  .overlay{
-  	background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
-      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
-  		width: 100%;
-  		height:350px;
-  }
-     .Digital{
-    font-size: 40px;
-    padding-top:100px ;
-    text-align: center;
-    color:white;
-    text-shadow: 3px 3px 3px  black;
-  }
-      .overlay2{
-  	background: rgba(0, 0, 0, 0.3) url('https://www.apc.com/ke/en/assets/698/media/19669/1200/BE850M2_LS3-980x490.jpg') 60% / cover fixed;
-      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
-  		width: 100%;
-  		height:400px;
-  }
-    .Digital2{
-    font-size: 40px;
-    padding-top:100px ;
-    text-align: center;
-    color:red;
-  }
+.overlay{
+background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+    width: 100%;
+    height:350px;
+}
+ .Digital{
+font-size: 40px;
+padding-top:100px ;
+text-align: center;
+color:white;
+text-shadow: 3px 3px 3px  black;
+}
+
   *
 {
   box-sizing: border-box;
@@ -301,6 +284,117 @@ font-family: 'Lato', sans-serif;
 {
   background: #191919;
   color: #fff;
+}
+@media screen and (max-width:650px){
+#container {
+    padding-left: 25px;
+}
+h2,h5,p,a,li {
+font-family: 'Lato', sans-serif;
+}
+h2{
+font-size:18px;
+}
+p{
+font-size:13px;
+}
+  #sidenav {
+    margin-top: 45px;
+    height: 23%;
+    width: 78px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  ul { padding:0 }
+
+  #sidenav a {
+    padding: 1px 2px 1px 3px;
+    text-decoration: none;
+    font-size: 8.5px;
+    color: #818181;
+    display: block;
+  }
+
+  #sidenav a:hover {
+    color: #f1f1f1;
+  }
+.cate{
+  font-size:9px;
+}
+.product {
+    width: 100px;
+    position: relative;
+}
+.img-wrapper img {
+    width: 90px;
+    height: 100px;
+    position: relative;
+}
+
+element.style {
+    height: 100px;
+    background-color: white;
+}
+.img-wrapper {
+    display: block;
+    width: 100%;
+    height: 240px;
+    border: 1px solid #afafaf;
+    border-bottom: 0;
+    overflow: hidden;
+    font-size:10px;
+    text-align: center;
+}
+.price {
+    background: #e32d2c;
+    position: absolute;
+    font-size: 10px;
+    padding: 4px 10px;
+    top: -15px;
+    right:-1px;
+}
+.price a{
+font-size:6.2px;
+}
+.title {
+    font-size: 10px;
+}
+.info {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    position: relative;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    backface-visibility: hidden;
+    transition-property: color,height;
+    transition-duration: 0.3s,0.4s;
+    transition-timing-function: ease-out;
+    height: 60px;
+}
+.overlay{
+background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
+-webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+width: 100%;
+height:250px;
+}
+.Digital {
+    font-size: 25px;
+    padding-top: 100px;
+    text-align: center;
+    margin-left: 50px;
+    color: white;
+    text-shadow: 3px 3px 3px black;
+}
 }
 </style>
 {%endblock%}

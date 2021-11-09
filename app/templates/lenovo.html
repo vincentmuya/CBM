@@ -31,7 +31,7 @@
         {%for comp in comp %}
         <ul class="listing">
   <li class="product">
-    <a style="background-color:white;" class="img-wrapper" href="{{ comp.get_absolute_url }}">
+   <a style="background-color:white;" class="img-wrapper" href="{{ comp.get_absolute_url }}">
       <img src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
     </a>
 
@@ -95,32 +95,19 @@ li {
 ul{
 padding-left:0px;
 }
-  .overlay{
-  	background: rgba(0, 0, 0, 0.3) url('https://wallpapercave.com/wp/wp3713814.png') 60% / cover fixed;
-      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
-  		width: 100%;
-  		height:350px;
-  }
-    .overlay2{
-  	background: rgba(0, 0, 0, 0.3) url('https://img.wallpapersafari.com/desktop/800/450/51/85/uaB4Np.jpg') 60% / cover fixed;
-      -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
-  		width: 100%;
-  		height:400px;
-  }
-    .Digital{
-    font-size: 50px;
-    padding-top:100px ;
-    text-align: center;
-    color:white;
-  }
-      .Digital2{
-    font-size: 50px;
-    padding-top:100px ;
-    text-align: center;
-    color:white;
-  }
+.overlay{
+background: rgba(0, 0, 0, 0.3) url('https://wallpapercave.com/wp/wp3713814.png') 60% / cover fixed;
+  -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+    width: 100%;
+    height:350px;
+}
+.Digital{
+font-size: 50px;
+padding-top:100px ;
+text-align: center;
+color:white;
+}
 
 *
 {
@@ -262,87 +249,108 @@ padding-left:0px;
   right: 10px;
 }
 
-.price.sale
-{
-  background: #00ba2f;
+@media screen and (max-width:650px){
+#container {
+    padding-left: 25px;
+}
+h2,h5,p,a,li {
+font-family: 'Lato', sans-serif;
+}
+h2{
+font-size:18px;
+}
+p{
+font-size:13px;
+}
+  #sidenav {
+    margin-top: 45px;
+    height: 23%;
+    width: 78px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  ul { padding:0 }
+
+  #sidenav a {
+    padding: 1px 2px 1px 3px;
+    text-decoration: none;
+    font-size: 8.5px;
+    color: #818181;
+    display: block;
+  }
+
+  #sidenav a:hover {
+    color: #f1f1f1;
+  }
+.cate{
+  font-size:9px;
+}
+.product {
+    width: 100px;
+    position: relative;
+}
+.img-wrapper img {
+    width: 90px;
+    height: 100px;
+    position: relative;
 }
 
-.price.old
-{
-  font-size: 0.95em;
-  padding: 4px 6px;
-  text-decoration: line-through;
-  top: -43px;
+element.style {
+    height: 100px;
+    background-color: white;
 }
-
-.actions-wrapper
-{
-  margin-top: 14px;
-  display: flex;
-  justify-content: space-around;
-  visibility: hidden;
+.img-wrapper {
+    display: block;
+    width: 100%;
+    height: 240px;
+    border: 1px solid #afafaf;
+    border-bottom: 0;
+    overflow: hidden;
+    font-size:10px;
+    text-align: center;
 }
-
-.actions-wrapper *
-{
-  width: 50%;
-  padding: 2px 0;
-  text-align: center;
-  color: white;
-  font-size: 0.95em;
-  font-weight: bold;
+.price {
+    background: #e32d2c;
+    position: absolute;
+    font-size: 10px;
+    padding: 4px 10px;
+    top: -15px;
+    right:-1px;
 }
-.actions-wrapper *:before
-{
-  font-family: "FontAwesome";
-  margin-right: 8px;
+.price a{
+font-size:6.2px;
 }
-.wishlist
-{
-  border-right: 1px solid #afafaf;
+.title {
+    font-size: 10px;
 }
-.wishlist:hover
-{
-  color: #e32d2c;
+.info {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    position: relative;
+    padding: 10px 5px 10px 5px;
+    text-align: center;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    backface-visibility: hidden;
+    transition-property: color,height;
+    transition-duration: 0.3s,0.4s;
+    transition-timing-function: ease-out;
+    height: 60px;
 }
-.wishlist:before
-{
-  content: "\f08a";
+.overlay{
+background: rgba(0, 0, 0, 0.3) url('https://wallpapercave.com/wp/wp3713814.png') 60% / cover fixed;
+-webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
+box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
+width: 100%;
+height:350px;
 }
-
-.cart:hover
-{
-  color: #0a75b9;
-}
-.cart:before
-{
-  content: "\f07a";
-}
-
-.product:hover .actions-wrapper *
-{
-  visibility: visible;
-}
-
-.note
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 4px 8px;
-  font-size: 0.9em;
-}
-
-.note.on-sale
-{
-  background: #00ba2f;
-  color: #fff;
-}
-
-.note.no-stock
-{
-  background: #191919;
-  color: #fff;
 }
 </style>
 {%endblock%}
