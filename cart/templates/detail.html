@@ -1,4 +1,18 @@
 {% extends 'base.html'%}{% load static %}
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <title></title>
+  </head>
+  <body>
 {% block title %}
     Your Shopping Cart
 {% endblock %}
@@ -12,7 +26,7 @@
             <span class="badge pull-right">
                 {% with totail_items=cart|length %}
                     {% if cart|length > 0 %}
-                        My Shopping Order:
+                        Shopping Order:
                         <a href="{% url "cart:cart_detail" %}" style="color: #ffffff">
                             {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
                         </a>
@@ -75,6 +89,8 @@
         </div>
         {%include 'card_carousel.html'%}
     </div>
+  </body>
+</html>
 <style media="screen">
   body{
     color:white;
@@ -83,13 +99,20 @@
 .container{
   padding-top:50px;
 }
+h2,a, td, th, p{
+font-family: 'Lato', sans-serif;
+}
 .cartimg{
 width:auto;
 height: 130px;
 }
 @media screen and (max-width:650px){
+h2,a, td, th, p{
+font-family: 'Lato', sans-serif;
+}
   h2{
     font-size: 15px;
+    font-family: 'Lato', sans-serif;
   }
 .table th, td {
 font-size: 8px;
