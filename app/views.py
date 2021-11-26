@@ -298,6 +298,8 @@ def dell(request):
 
 
 def hp(request):
+    comp = Computer.objects.filter(compcategory__parent_id=41)
+    category = CompCategory.objects.filter(parent_id__id=41)
     items = list(Computer.objects.all())
     random_items = random.sample(items, 4)
     random_items2 = random.sample(items, 4)
@@ -314,7 +316,7 @@ def hp(request):
             return HttpResponseRedirect('/')
     else:
         feedback_form = FeedbackInquiryForm()
-    return render(request, 'hp.html', {'random_items': random_items, 'random_items2': random_items2,
+    return render(request, 'hp.html', {"comp": comp, "category": category, 'random_items': random_items, 'random_items2': random_items2,
                                        'random_items3': random_items3, 'feedback_form': feedback_form})
 
 

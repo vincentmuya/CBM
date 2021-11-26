@@ -11,14 +11,47 @@
       <strong><h1 class="Digital" id="Digital">Premium performance &<br> support for your business</h1></strong>
     </section>
         <br>
-        <div class="container">
+    <div  id="sidenav">
+    <ul>
+        <h5 class="cate" style=" color:white;">Categories</h5>
+      <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
+      {% for cat in category %}
+      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
+        <div id="container"  class="container">
   <h2 style="color:white;text-align: center;">Business Workflow & Printing Solutions.</h2>
   <p style="color:white;">Streamline crucial business processes and tasks with the latest tools for efficient printer fleet management that helps reduce IT
       workload and costs, enhances employee productivity, and offers more secure document printing. With a range of commercial products, services, and solutions,
       HP is a trusted and experienced business partner that can help you fill gaps in your business.
 </p>
-
   </div>
+
+   <div id="container" class="container">
+            <div class="row" id="row">
+        {%for comp in comp %}
+        <ul class="listing">
+  <li class="product">
+    <a style="background-color:white;" class="img-wrapper" href="{{ comp.get_absolute_url }}">
+      <img style="background-color:white;" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
+    </a>
+
+    <div class="info">
+      <div class="title">{{ comp.title }}</div>
+      <div class="price">KSH{{ comp.price}}/=</div>
+
+    </div>
+    <div class="actions-wrapper">
+      <a href="{{ comp.get_absolute_url }}" class="add-btn cart">Add To Cart</a>
+    </div>
+  </li>
+</ul>
+
+{%endfor%}
+</div>
+    </div>
       {%include 'card_carousel.html'%}
   </body>
 </html>
@@ -28,6 +61,40 @@ body{
 }
 h1,h2,h5,p,a,li {
 font-family: 'Lato', sans-serif;
+}
+#container{
+padding-left:100px;
+}
+#sidenav {
+  margin-top: 40px;
+  height: 38%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 35px;
+}
+
+#sidenav a {
+  padding: 3px 5px 3px 13px;
+  text-decoration: none;
+  font-size: 12px;
+  color: white;
+  display: block;
+}
+
+#sidenav a:hover {
+  color: #f1f1f1;
+}
+li {
+    padding: 5px;
+    list-style: none;
+}
+ul{
+padding-left:0px;
 }
 .overlay{
 background: rgba(0, 0, 0, 0.3) url('https://wallpaperaccess.com/full/834459.jpg') 60% / cover fixed;

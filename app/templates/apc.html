@@ -17,24 +17,32 @@
       and surge protector options work hard for you when maximum availability and guaranteed uptime is non-negotiable. Choose the battery backup and data protection built to ensure that business critical equipment
       and applications are never at risk. To find the products you need, start with our power supply calculator for business solutions.
 </p>
-            <br>
-    {%for comp in comp %}
+            </div>
+
+   <div id="container" class="container">
+            <div class="row" id="row">
+        {%for comp in comp %}
         <ul class="listing">
   <li class="product">
     <a style="background-color:white;" class="img-wrapper" href="{{ comp.get_absolute_url }}">
-      <img src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static " img/no_image.png" %}{% endif %}" alt="Image" />
+      <img style="background-color:white;" src="{% if comp.image %}{{ comp.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" alt="Image" />
     </a>
 
     <div class="info">
       <div class="title">{{ comp.title }}</div>
-      <div class="price">KSH:{{ comp.price }}/=</div>
+      <div class="price">KSH{{ comp.price}}/=</div>
 
     </div>
-
+    <div class="actions-wrapper">
+      <a href="{{ comp.get_absolute_url }}" class="add-btn cart">Add To Cart</a>
+    </div>
   </li>
-    {%endfor%}
-   </ul>
+</ul>
+
+{%endfor%}
 </div>
+    </div>
+
     {%include 'card_carousel.html'%}
 
   </body>
