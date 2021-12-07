@@ -12,7 +12,7 @@
       <strong><h1 class="Digital" id="Digital">Solutions for IT infrastructure, <br> workforce, industry and OEM.</h1></strong>
     </section>
         <br>
-        <div  id="sidenav">
+        <div class="sidenav" id="sidenav">
     <ul>
         <h5 class="cate" style=" color:white;">Categories</h5>
       <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
@@ -193,14 +193,14 @@ font-size:6.2px;
     font-size: 10px;
 }
 .overlay{
-background: rgba(0, 0, 0, 0.3) url('https://therecord.media/wp-content/uploads/2021/05/Dell.jpg') 60% / cover fixed;
+background: rgba(0, 0, 0, 0.3) url('https://onyxes.com/wp-content/uploads/640731.jpg') 60% / cover fixed;
 -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
 width: 100%;
-height:300px;
+height:200px;
 }
 .Digital {
-    font-size: 30px;
+    font-size: 20px;
     padding-top: 100px;
     text-align: center;
     margin-left: 50px;
@@ -210,3 +210,14 @@ height:300px;
 }
 </style>
 {%endblock%}
+
+{% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   {% bootstrap_javascript %}
+   <script>
+   $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+        $('.sidenav, .slogan').css({'opacity':(( 400-scroll )/400)});
+    });
+   </script>
+  {% endblock %}
