@@ -6,7 +6,7 @@
     <title></title>
   </head>
   <body>
-        <div  id="sidenav">
+        <div class="sidenav " id="sidenav">
     <ul>
         <h5 class="cate" style=" color:white;">Categories</h5>
       <li {% if not compcategory %}class="selected"{% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
@@ -16,6 +16,8 @@
     </ul>
   </div>
         <div class="container" id="container">
+            <p>Category: {{ comp.compcategory }}</p>
+
             <div class="row" id="row">
         {%for comp in comp %}
         <ul class="listing">
@@ -309,62 +311,65 @@ font-family: 'Lato', sans-serif;
 p{
 font-size:13px;
 }
-  #sidenav {
-    margin-top: 45px;
-    height: 23%;
-    width: 78px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  ul { padding:0 }
+#sidenav {
+margin-top: 45px;
+height: 23%;
+width: 78px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+padding-top: 20px;
+}
+ul { padding:0 }
 
-  #sidenav a {
-    padding: 1px 2px 1px 3px;
-    text-decoration: none;
-    font-size: 8.5px;
-    color: #818181;
-    display: block;
-  }
+#sidenav a {
+padding: 1px 2px 1px 3px;
+text-decoration: none;
+font-size: 8.5px;
+color: #818181;
+display: block;
+}
 
-  #sidenav a:hover {
-    color: #f1f1f1;
-  }
+#sidenav a:hover {
+color: #f1f1f1;
+}
 .cate{
   font-size:9px;
 }
 .product {
-    width: 100px;
+    width: 85px;
+    height: 180px;
     position: relative;
 }
 .img-wrapper img {
-    width: 90px;
+    width: 75px;
     height: 100px;
     position: relative;
 }
-
-element.style {
-    height: 100px;
-    background-color: white;
-}
-.img-wrapper {
-    display: block;
+.info {
     width: 100%;
-    height: 240px;
-    border: 1px solid #afafaf;
-    border-bottom: 0;
-    overflow: hidden;
-    font-size:10px;
+    background: #000;
+    color: #fff;
+    position: relative;
+    bottom: 120px;
+    padding:10px;
     text-align: center;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
+    backface-visibility: hidden;
+    transition-property: color,height;
+    transition-duration: 0.3s,0.4s;
+    transition-timing-function: ease-out;
+    height: 83px;
 }
 .price {
     background: #e32d2c;
     position: absolute;
-    font-size: 10px;
+    font-size: 9.5px;
     padding: 4px 10px;
     top: -15px;
     right:-1px;
@@ -375,22 +380,17 @@ font-size:6.2px;
 .title {
     font-size: 10px;
 }
-.info {
-    width: 100%;
-    background: #000;
-    color: #fff;
-    position: relative;
-    padding: 10px 5px 10px 5px;
-    text-align: center;
-    vertical-align: middle;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px rgb(0 0 0 / 0%);
-    backface-visibility: hidden;
-    transition-property: color,height;
-    transition-duration: 0.3s,0.4s;
-    transition-timing-function: ease-out;
-    height: 60px;
-}
 }
 </style>
 {%endblock%}
+
+{% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   {% bootstrap_javascript %}
+   <script>
+   $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+        $('.sidenav, .slogan').css({'opacity':(( 300-scroll )/300)});
+    });
+   </script>
+  {% endblock %}

@@ -15,7 +15,7 @@
     <title></title>
   </head>
   <body>
-        <div  id="sidenav">
+        <div class="sidenav" id="sidenav">
     <ul>
         <h4 class="cate" style=" color:white;">Categories</h4>
       <li {% if not compcategory %} class="selected" {% endif %}><a href="{%url 'on_sale'%}">All Products</a></li>
@@ -433,5 +433,10 @@ font-size:10px;
   document.getElementById("img01" ).src = element.src;
   document.getElementById("modal01").style.display = "block";
 }
+
+   $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+        $('.sidenav, .slogan').css({'opacity':(( 200-scroll )/200)});
+    });
    </script>
    {% endblock %}
