@@ -16,8 +16,9 @@
     </ul>
   </div>
         <div class="container" id="container">
-            <p>Category: {{ comp.compcategory }}</p>
-
+            {%for comp in comp|slice:":1" %}
+            <p style="color:white;">Category: {{ comp.compcategory }}</p>
+            {% endfor %}
             <div class="row" id="row">
         {%for comp in comp %}
         <ul class="listing">
