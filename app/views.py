@@ -320,7 +320,7 @@ def hp(request):
                                        'random_items3': random_items3, 'feedback_form': feedback_form})
 
 
-def security_surveillance(request):
+def anviz(request):
     comp = Computer.objects.filter(compcategory__parent_id=29)
     category = CompCategory.objects.filter(parent_id__id=29)
     items = list(Computer.objects.all())
@@ -339,7 +339,7 @@ def security_surveillance(request):
             return HttpResponseRedirect('/')
     else:
         feedback_form = FeedbackInquiryForm()
-    return render(request, 'security_surveillance.html', {"comp": comp, "category": category,
+    return render(request, 'anviz.html', {"comp": comp, "category": category,
                                                           'random_items': random_items, 'random_items2': random_items2,
                                                           'random_items3': random_items3, 'feedback_form': feedback_form})
 
