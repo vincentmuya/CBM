@@ -27,6 +27,7 @@ urlpatterns = [
     url("request/info", views.request_info, name="request_info"),
     url("received", views.received, name="received"),
     url("new/product", views.new_product, name="new_product"),
+    url("aruba", views.arubahpe, name="arubahpe"),
 
 ]
 
