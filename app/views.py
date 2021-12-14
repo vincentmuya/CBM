@@ -416,6 +416,30 @@ def arubahpe(request):
                                         'feedback_form': feedback_form})
 
 
+def giganet(request):
+    comp = Computer.objects.filter(compcategory__parent_id=50)
+    category = CompCategory.objects.filter(parent_id__id=50)
+    items = list(Computer.objects.all())
+    random_items = random.sample(items, 4)
+    random_items2 = random.sample(items, 4)
+    random_items3 = random.sample(items, 4)
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = ":\n{}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('/')
+    else:
+        feedback_form = FeedbackInquiryForm()
+    return render(request, 'giganet.html', {"comp":comp, "category": category, 'random_items': random_items,
+                                        'random_items2': random_items2, 'random_items3': random_items3,
+                                        'feedback_form': feedback_form})
+
+
 def comp_detail(request, id, slug, compcategory_slug=None):
     comp = get_object_or_404(Computer, id=id, slug=slug)
     cart_product_form = CartAddProductForm()
