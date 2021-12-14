@@ -8,9 +8,19 @@
   </head>
   <body>
   <section class="overlay">
-      <strong><h1 class="Digital" id="Digital">Networking</h1></strong>
+      <strong><h1 class="Digital" id="Digital">Giganet</h1></strong>
     </section>
         <br>
+          <div class="sidenav" id="sidenav">
+    <ul>
+        <h5 class="cate" style=" color:white;">Categories</h5>
+      <li {% if not compcategory %}class="selected"{% endif %}></li>
+      {% for cat in category %}
+      <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+
         <div id="container" class="container">
   <h2 style="color:white;text-align: center;">Networking Solutions</h2>
   <p style="color:white;">A solution hub for the entire information technology requirements Software and Hardware of the modern
@@ -55,8 +65,40 @@ body{
 h1,h2,h5,p,a,li {
 font-family: 'Lato', sans-serif;
 }
+#sidenav {
+  margin-top: 40px;
+  height: 38%;
+  width: 150px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 35px;
+}
+
+#sidenav a {
+  padding: 3px 5px 3px 13px;
+  text-decoration: none;
+  font-size: 12px;
+  color: white;
+  display: block;
+}
+
+#sidenav a:hover {
+  color: #f1f1f1;
+}
+li {
+    padding: 5px;
+    list-style: none;
+}
+ul{
+padding-left:0px;
+}
+
 .overlay{
-background: rgba(0, 0, 0, 0.3) url('https://cloudfront-us-east-1.images.arcpublishing.com/gmg/CYY4ROVXPNHMHDGD6DNXQ6UQX4.jpg') 60% / cover fixed;
+background: rgba(0, 0, 0, 0.3) url('https://www.sdxcentral.com/wp-content/uploads/2021/06/HPE-Silicon-on-Demand-Nerfs-Intel-Xeons.jpg') 60% / cover fixed;
   -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
     width: 100%;
@@ -302,6 +344,34 @@ font-family: 'Lato', sans-serif;
 h2{
 font-size:18px;
 }
+#sidenav {
+    margin-top: 45px;
+    height: 23%;
+    width: 78px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  ul { padding:0 }
+
+  #sidenav a {
+    padding: 1px 2px 1px 3px;
+    text-decoration: none;
+    font-size: 8.5px;
+    color: #818181;
+    display: block;
+  }
+
+  #sidenav a:hover {
+    color: #f1f1f1;
+  }
+.cate{
+  font-size:9px;
+}
 p{
 font-size:13px;
 }
@@ -375,7 +445,7 @@ font-size:6.2px;
     font-size: 10px;
 }
 .overlay{
-background: rgba(0, 0, 0, 0.3) url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/APC-logo.svg/1200px-APC-logo.svg.png') 60% / cover fixed;
+background: rgba(0, 0, 0, 0.3) url('https://media.istockphoto.com/photos/fiber-optic-cables-and-utp-network-cables-picture-id503844546?k=20&m=503844546&s=170667a&w=0&h=AVzQhgRMd7ZEfLSOUYrEkpOUFhaPeoetICGyAUNsCaA=') 60% / cover fixed;
 -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
 box-shadow: inset 0 0 100px rgba(0, 0, 0, 5);
 width: 100%;
@@ -392,3 +462,14 @@ height:200px;
 }
 </style>
 {%endblock%}
+
+{% block scripts %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   {% bootstrap_javascript %}
+   <script>
+   $(window).scroll(function() {
+    var scroll = $(window).scrollTop();
+        $('.sidenav, .slogan').css({'opacity':(( 500-scroll )/500)});
+    });
+   </script>
+  {% endblock %}
