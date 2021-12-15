@@ -492,6 +492,7 @@ def category(request, compcategory_slug=None):
     if compcategory_slug:
         compcategory = get_object_or_404(CompCategory, slug=compcategory_slug)
         comp = comp.filter(compcategory=compcategory)
+        category = category.filter(parent_id__id=compcategory.parent_id)
     return render(request, 'category.html', {"comp": comp, "category": category, "compcategory": compcategory,
                                              "category_by_product": category_by_product, 'random_items': random_items,
                                              'random_items2': random_items2, 'random_items3': random_items3,

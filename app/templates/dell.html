@@ -15,7 +15,6 @@
         <div class="sidenav" id="sidenav">
     <ul>
         <h5 class="cate" style=" color:white;">Categories</h5>
-      <li {% if not compcategory %}class="selected"{% endif %}></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
@@ -141,7 +140,7 @@ font-size:13px;
     padding: 1px 2px 1px 3px;
     text-decoration: none;
     font-size: 8.5px;
-    color: #818181;
+    color: white;
     display: block;
   }
 

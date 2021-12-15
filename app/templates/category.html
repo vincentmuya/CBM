@@ -8,8 +8,8 @@
   <body>
         <div class="sidenav " id="sidenav">
     <ul>
-        <h5 class="cate" style="color:white">Scroll to view more</h5>
-        <h5 class="cate" style=" color:white;">Categories <i class="fa fa-angle-double-down" style="left: 350px;"></i></h5>
+
+        <h5 class="cate" style=" color:white;">Categories </h5>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
@@ -55,7 +55,7 @@ padding-left:100px;
 #sidenav {
   margin-top: 40px;
   height: 38%;
-  width: 190px;
+  width: 150px;
   position: fixed;
   z-index: 1;
   top: 0;
