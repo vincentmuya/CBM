@@ -17,8 +17,8 @@
   <body>
         <div class="sidenav" id="sidenav">
     <ul>
-        <h4 class="cate" style=" color:white;">Categories</h4>
-      <li {% if not compcategory %} class="selected" {% endif %}>/li>
+        <h5 class="cate" style="color:white">Scroll to view more</h5>
+        <h5 class="cate" style=" color:white;">Categories <i class="fa fa-angle-double-down" style="left: 350px;"></i></h5>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}  class="selected" {% endif %}><a style="color:white;" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
       {% endfor %}
@@ -86,7 +86,7 @@ padding-left:100px;
 #sidenav {
   margin-top: 40px;
   height: 38%;
-  width: 150px;
+  width: 190px;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -327,6 +327,7 @@ display:inline-block;
     background-color: #111;
     overflow-x: hidden;
     padding-top: 20px;
+    border: 1px solid red;
   }
   ul { padding:0 }
 
