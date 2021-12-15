@@ -8,7 +8,8 @@
   <body>
         <div class="sidenav " id="sidenav">
     <ul>
-        <h5 class="cate" style=" color:white;">Categories</h5>
+        <h5 class="cate" style="color:white">Scroll to view more</h5>
+        <h5 class="cate" style=" color:white;">Categories <i class="fa fa-angle-double-down" style="left: 350px;"></i></h5>
       <li {% if not compcategory %}class="selected"{% endif %}></li>
       {% for cat in category %}
       <li {% if compcategory.slug == cat.slug %}class="selected"{% endif %}><a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
@@ -312,17 +313,17 @@ font-family: 'Lato', sans-serif;
 p{
 font-size:13px;
 }
-#sidenav {
-margin-top: 45px;
-height: 23%;
-width: 78px;
-position: fixed;
-z-index: 1;
-top: 0;
-left: 0;
-background-color: #111;
-overflow-x: hidden;
-padding-top: 20px;
+#sidenav{
+    margin-top: 55px;
+    height: 40%;
+    width: 78px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
 }
 ul { padding:0 }
 
