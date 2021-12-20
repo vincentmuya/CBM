@@ -55,6 +55,14 @@
          <a href="{%url 'request_info'%}"><button type="button" class="btn btn-info"><input type="submit" value="Request Info"></button></a>
             </div>
 
+            <div class="button">
+         <a href="{%url 'update' comp.id%}"><button type="button" class="btn btn-dark"><input type="submit" value="Update/Edit"></button></a>
+            </div>
+
+            <div class="button">
+         <a href="{%url 'delete' comp.id%}"><button type="button" class="btn btn-danger"><input type="submit" value="Delete"></button></a>
+            </div>
+
           </div>
 		</div>
         <button onclick="onClick(productimg)" class="btn btn-warning" id="compimg"><i class="fas fa-search-plus" style="left: 350px;"></i>Zoom</button>

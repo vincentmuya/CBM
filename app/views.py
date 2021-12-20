@@ -592,6 +592,42 @@ def new_product(request):
     return render(request, 'new_product.html', {"form": form, 'feedback_form': feedback_form})
 
 
+def update_item(request, id):
+
+    # fetch the object related to passed id
+    obj = get_object_or_404(Computer, id=id)
+
+    # pass the object as instance in form
+    form = NewProductForm(request.POST or None, instance=obj)
+
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/")
+
+    if request.method == 'POST':
+        feedback_form = FeedbackInquiryForm(request.POST)
+        if feedback_form.is_valid():
+            sender = feedback_form.cleaned_data['email']
+            subject = "You have a new Question or Inquiry from {}".format(sender)
+            message_content = "Message: {}".format(feedback_form.cleaned_data['message_content'])
+            message = "The Question or Inquiry is {}".format(message_content)
+            send_mail(subject, message, settings.SERVER_EMAIL, [sender])
+
+            return HttpResponseRedirect('footer.html')
+    else:
+        feedback_form = FeedbackInquiryForm()
+
+    return render(request, "update.html", {"form": form, 'feedback_form': feedback_form})
+
+
+def delete(request, id):
+    comp = Computer.objects.get(id=id)
+    comp.delete()
+    return HttpResponse('deleted')
+
+
 def request_info(request):
     if request.method == 'POST':
         info_form = RequestProductInfoForm(request.POST)

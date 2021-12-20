@@ -29,6 +29,8 @@ urlpatterns = [
     url("new/product", views.new_product, name="new_product"),
     url("aruba", views.arubahpe, name="arubahpe"),
     url("giganet", views.giganet, name="giganet"),
+    url(r'^update/(?P<id>\d+)', views.update_item, name="update"),
+    url(r'^delete/(?P<id>\d+)', views.delete, name="delete"),
 
 ]
 
