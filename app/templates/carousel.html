@@ -11,11 +11,11 @@
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
-    <button type="button"  class="btn btn-primary" id="button" data-target="#carouselExampleIndicators" data-slide-to="0" >Security</button>
-    <button type="button" class="btn btn-danger" id="button" data-target="#carouselExampleIndicators" data-slide-to="1">Digital Press</button>
-    <button type="button" class="btn btn-warning" id="button" data-target="#carouselExampleIndicators" data-slide-to="2 ">UPS</button>
-    <button type="button" class="btn btn-success" id="button" data-target="#carouselExampleIndicators" data-slide-to="3">Computers</button>
-    <button type="button" class="btn btn-dark" id="button" data-target="#carouselExampleIndicators" data-slide-to="4">Software</button>
+    <a href="{%url 'anviz'%}" class="buttonLink"><button type="button"  class="btn btn-primary" id="button" >Security</button></a>
+    <a href="{%url 'digital_press'%}" class="buttonLink"><button type="button" class="btn btn-danger" id="button">Digital Press</button></a>
+    <a href="{%url 'apc'%}" class="buttonLink"><button type="button" class="btn btn-warning" id="button">UPS</button></a>
+    <a href="{%url 'lenovo'%}" class="buttonLink"><button type="button" class="btn btn-success" id="button">Computers</button></a>
+    <a href="{%url 'software'%}" class="buttonLink"><button type="button" class="btn btn-dark" id="button">Software</button></a>
 
   </ol>
   <div class="carousel-inner">
@@ -87,6 +87,14 @@
 .mobile{
 display:none;
 }
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
 .secondimg{
 position:absolute;
 bottom:280px;
@@ -131,6 +139,9 @@ background-color:red;
 width:100%;
 height:250px;
 }
+a.buttonLink{
+padding:0px;
+}
 .carousel-control-next-icon, .carousel-control-prev-icon{
 width:30px;
 height:30px;
@@ -152,6 +163,7 @@ background-color:red;
 }
 #button {
     width: 70px;
+    height:40px;
     margin: 5px;
     font-size: 10px;
 }
