@@ -101,6 +101,11 @@ def on_sale(request):
                                             'feedback_form': feedback_form})
 
 
+def products_category(request):
+    laptops = Computer.objects.filter(compcategory_id__in=[18, 45, 23])
+    return render(request, 'products_category.html', {"laptops": laptops})
+
+
 def search_results(request):
     categories = CompCategory.objects.all()
     items = list(Computer.objects.all())
