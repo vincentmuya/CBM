@@ -1,0 +1,31 @@
+body{
+  margin-top:100px ;
+  background-color:black;
+}
+h2,li,a{
+font-family: 'Lato', sans-serif;
+}
+#block {
+  width: 100px;
+  float: left;
+}
+.card{
+  padding: 15px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card-img-top{
+  height: 150px;
+  width: 150px;
+}
+
+.card:hover {
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
+}
+@media screen and (max-width:650px) {
+  body{
+    padding-top: 5%;
+  }
+.name{
+  font-size: 15px;
+}
+}
